@@ -23,7 +23,7 @@
   const THEMES = ['gradient', 'classic', 'dark'];
   let theme = params.get('theme') || store('wa.theme') || 'gradient';
   let speed = parseFloat(params.get('speed')) || 1;
-  let sound = store('wa.sound') === '1';
+  let sound = store('wa.sound') !== '0';  // on by default
   let paused = false;
   if (params.get('frame') === '0') root.classList.add('noframe');
   applyTheme();
@@ -186,8 +186,18 @@
     const b = document.createElement('div');
     b.className = 'bubble';
 
-    if (step.type === 'voice') b.classList.add('vn');
-    if (step.type === 'image') {
+    if (step.type === 'video') {
+      // WhatsApp-style video message: poster frame, play button, duration; plays inline
+      b.classList.add('img', 'vid');
+      if (!step.text || PLAIN) b.classList.add('nocap');
+      inner = (showSender ? senderHTML(step.from) : '') +
+        (step.reply ? quoteHTML(step.reply) : '') +
+        `<div class="vbox"><video preload="none" playsinline ${step.poster ? `poster="${esc(step.poster)}"` : ''} src="${esc(step.src)}"></video>` +
+        `<span class="vplay">${ICON.play}</span><span class="vdur">${ICON.cam || ''}${esc(step.dur || '')}</span></div>` +
+        (step.text && !PLAIN ? `<div class="cap body">${linkify(step.text)}<span class="spacer"></span></div>` : '') +
+        metaHTML(time, out);
+    } else if (step.type === 'voice') b.classList.add('vn');
+    if (step.type === 'video') { /* built above */ } else if (step.type === 'image') {
       b.classList.add('img');
       if (!step.text) b.classList.add('nocap');
       inner = (showSender ? senderHTML(step.from) : '') +
@@ -254,6 +264,13 @@
     const play = b.querySelector('.play');
     if (play) play.addEventListener('click', (e) => { e.stopPropagation(); playVoice(b, step.dur, step.audio); });
     if (step.audio) bindSeek(b, step.audio);
+    const vbox = b.querySelector('.vbox');
+    if (vbox) vbox.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const v = vbox.querySelector('video');
+      if (v.paused) { if (current) current.pause(); document.querySelectorAll('.vbox video').forEach((o) => o !== v && o.pause()); v.controls = true; v.play().catch(() => {}); vbox.classList.add('on'); }
+      else v.pause();
+    });
     b.querySelectorAll('.opt').forEach((o) => o.addEventListener('click', () => vote(id, 'me', +o.dataset.i)));
     b.addEventListener('dblclick', () => react(id, 'me', '❤️'));
     if (step.info) b.addEventListener('click', (e) => { if (!e.target.closest('a')) openInfo(step); });
@@ -433,23 +450,59 @@
     if (!keepSub) setSub(defaultSub, false);
   }
 
-  /* ---------- sound ---------- */
+  /* ---------- sound: WhatsApp-like message sounds, synthesized (no original sound files) ---------- */
   let actx = null;
-  function blip(out) {
-    if (!sound) return;
+  function ctx() {
+    if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    return actx;
+  }
+  function tone(c, t0, f0, f1, dur, vol, type) {
+    const o = c.createOscillator(), g = c.createGain();
+    o.type = type || 'sine';
+    o.frequency.setValueAtTime(f0, t0);
+    o.frequency.exponentialRampToValueAtTime(f1, t0 + dur * .8);
+    g.gain.setValueAtTime(.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + .008);
+    g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
+    o.connect(g).connect(c.destination);
+    o.start(t0); o.stop(t0 + dur + .02);
+  }
+  function whoosh(c, t0) {
+    const n = Math.floor(c.sampleRate * .16), buf = c.createBuffer(1, n, c.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n);
+    const src = c.createBufferSource(), bp = c.createBiquadFilter(), g = c.createGain();
+    src.buffer = buf; bp.type = 'bandpass'; bp.Q.value = 1.2;
+    bp.frequency.setValueAtTime(900, t0); bp.frequency.exponentialRampToValueAtTime(3200, t0 + .14);
+    g.gain.setValueAtTime(.0001, t0); g.gain.exponentialRampToValueAtTime(.22, t0 + .02); g.gain.exponentialRampToValueAtTime(.0001, t0 + .16);
+    src.connect(bp).connect(g).connect(c.destination);
+    src.start(t0);
+  }
+  // kind: 'in' (incoming text), 'out' (sent), 'media' (voice/video/image)
+  function blip(kind) {
+    if (!sound || !unlocked) return;
     try {
-      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
-      const o = actx.createOscillator(), g = actx.createGain();
-      o.type = 'sine';
-      o.frequency.setValueAtTime(out ? 880 : 660, actx.currentTime);
-      o.frequency.exponentialRampToValueAtTime(out ? 1320 : 990, actx.currentTime + .08);
-      g.gain.setValueAtTime(.0001, actx.currentTime);
-      g.gain.exponentialRampToValueAtTime(.12, actx.currentTime + .01);
-      g.gain.exponentialRampToValueAtTime(.0001, actx.currentTime + .18);
-      o.connect(g).connect(actx.destination);
-      o.start(); o.stop(actx.currentTime + .2);
+      const c = ctx(), t = c.currentTime + .01;
+      if (kind === 'out' || kind === true) { whoosh(c, t); tone(c, t + .05, 1400, 2100, .07, .05); return; }
+      if (kind === 'media') { tone(c, t, 520, 780, .09, .14, 'triangle'); tone(c, t + .1, 780, 1040, .1, .11, 'triangle'); return; }
+      // incoming: short bright double pop
+      tone(c, t, 1180, 1500, .06, .16, 'sine');
+      tone(c, t + .085, 1560, 1980, .08, .13, 'sine');
     } catch (e) { /* no audio */ }
   }
+  // browsers allow sound only after the first user gesture
+  let unlocked = false;
+  const hint = document.createElement('button');
+  hint.className = 'sndhint'; hint.textContent = '🔊 הקישו להפעלת צלילים';
+  function unlock() {
+    if (unlocked) return;
+    unlocked = true;
+    try { ctx(); } catch (e) { /* no audio */ }
+    hint.remove();
+    removeEventListener('pointerdown', unlock, true); removeEventListener('keydown', unlock, true);
+  }
+  addEventListener('pointerdown', unlock, true); addEventListener('keydown', unlock, true);
+  if (sound) document.querySelector('.screen').appendChild(hint);
 
   /* ---------- player ---------- */
   const sleep = (ms) => new Promise((res) => {
@@ -475,10 +528,10 @@
     const row = bubble(step, time);
     place(row, opts);
     if (opts.history && step.from === 'me') readTicksNow(row);
-    if (!opts.history) blip(step.from === 'me');
+    if (!opts.history) blip(step.from === 'me' ? 'out' : (step.type === 'voice' || step.type === 'video' || step.type === 'image') ? 'media' : 'in');
   }
 
-  const MSG_TYPES = new Set([undefined, 'image', 'voice', 'poll']);
+  const MSG_TYPES = new Set([undefined, 'image', 'voice', 'poll', 'video']);
 
   async function play(token) {
     let loop = 0;
@@ -636,7 +689,7 @@
     const act = b.dataset.act;
     if (act === 'theme') { theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length]; store('wa.theme', theme); applyTheme(); }
     if (act === 'speed') { speed = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length] || 1; $('#speedLbl').textContent = 'x' + speed; }
-    if (act === 'sound') { sound = !sound; store('wa.sound', sound ? '1' : '0'); $('#soundLbl').textContent = sound ? 'פעיל' : 'כבוי'; blip(false); }
+    if (act === 'sound') { sound = !sound; store('wa.sound', sound ? '1' : '0'); $('#soundLbl').textContent = sound ? 'פעיל' : 'כבוי'; if (!sound) hint.remove(); blip('in'); }
     if (act === 'pause') { paused = !paused; b.textContent = paused ? 'המשך' : 'השהיה'; }
     if (act === 'restart') { paused = false; start(); }
   });
