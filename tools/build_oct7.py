@@ -200,6 +200,47 @@ if os.path.exists(NOVA_PATH):
                      'caveat': ''},
         }))
 
+# ---- published voice notes, calls, photos and videos of Nova victims (data/nova_media*.json) ----
+NM_PATH, NMP_PATH = os.path.join(HERE, 'data', 'nova_media.json'), os.path.join(HERE, 'data', 'nova_media_plan.json')
+PARTY_AT = 6 * 60 + 20  # block of untimed party media, just before 06:29
+if os.path.exists(NM_PATH) and os.path.exists(NMP_PATH):
+    nm = json.load(open(NM_PATH, encoding='utf-8'))
+    placed.append(((1, PARTY_AT, 0), {'type': 'system', 'id': 'S02', 'text': 'מהמסיבה, לפני 06:29'}))
+    nsub = {}
+    for pl in json.load(open(NMP_PATH, encoding='utf-8')):
+        x = nm[pl['i']]
+        first = re.split(r'\s*(?:,| ו)(?=[\u05d0-\u05ea])', x['name'], maxsplit=1)[0].strip() if x['type'] != 'video' or 'שוהם' not in x['name'] else x['name']
+        name = first if len(first) > 2 else x['name']
+        mid = 'nova_' + re.sub(r'\W+', '_', name).strip('_')
+        if mid not in nova_members:
+            nova_members[mid] = {'name': name + (f", {x['age']}" if x.get('age') and ',' not in name else ''), 'color': '#5d6d7e', 'g': 'f' if (x.get('fate') or '').split(' ')[0].endswith('ה') else 'm', 'candle': True}
+        blk = pl.get('block')
+        if blk == 'party':
+            key = (1, PARTY_AT, 1 + len([k for k in nsub if k == 'party']))
+        elif blk == 'untimed':
+            key = (1, UNTIMED_AT, 50 + len(nsub))
+        else:
+            hh, mm = pl['time'].split(':'); key = (1, int(hh) * 60 + int(mm), 1)
+        nsub[pl['i']] = blk or ''
+        t = pl.get('time') or ('לילה' if blk == 'party' else 'בוקר')
+        kind = {'voice_note': 'הודעה קולית אמיתית שפורסמה', 'call_recording': 'הקלטת שיחה מאותו בוקר, כפי שפורסמה'}.get(x.get('kind'), 'תמונה מאותו לילה' if x['type'] == 'photo' else 'סרטון מקורי מאותו לילה ובוקר')
+        note = ('שעה משוערת, ' + pl['note'] if pl.get('approx') else (pl.get('note') or '')) if pl.get('time') else ('מהמסיבה, שעה לא פורסמה' if blk == 'party' else 'שעה לא פורסמה, מאותו בוקר')
+        tr = clean((x.get('transcript') or '').replace(' / ', '\n')) if pl.get('transcript') else ''
+        st = {'from': mid, 'id': f"M{pl['i']:02d}", 'time': t, 'kind': kind, 'note': note, 'memorial': clean(x.get('fate') or ''),
+              'sources': [{'label': clean(x.get('source_title') or x.get('media_platform') or 'מקור'), 'url': x['media_page']}],
+              'info': {'time': t + (f' ({note})' if note else ''), 'people': clean(x['name']) + (f" → {clean(x['recipient'])}" if x.get('recipient') else ''),
+                       'event': tr or clean(x.get('caption_or_credit') or ''), 'decision': '', 'doc': kind + (f". צילום: {clean(x['filmed_by'])}" if x.get('filmed_by') else '') + (f". {clean(x['caption_or_credit'])}" if x.get('caption_or_credit') else ''), 'caveat': ''}}
+        if x['type'] == 'voice':
+            dur = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', os.path.join(HERE, pl['file'])], capture_output=True, text=True).stdout.strip()
+            st.update(type='voice', audio=pl['file'], dur='%d:%02d' % divmod(round(float(dur or 0)), 60), transcript=tr)
+        elif x['type'] == 'photo':
+            st.update(type='image', src=pl['file'], text='')
+        else:
+            dur = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', os.path.join(HERE, pl['file'])], capture_output=True, text=True).stdout.strip()
+            st.update(type='video', src=pl['file'], poster=pl.get('poster', ''), dur='%d:%02d' % divmod(round(float(dur or 0)), 60))
+        members_used.add(mid)
+        placed.append((key, st))
+
 # ---- recorded speech from the transcripts file (data/recordings.json) ----
 REC_PATH = os.path.join(HERE, 'data', 'recordings.json')
 AUDIO_MAP = json.load(open(os.path.join(HERE, 'data', 'audio_map.json'), encoding='utf-8')) if os.path.exists(os.path.join(HERE, 'data', 'audio_map.json')) else {}
@@ -478,6 +519,9 @@ if os.path.exists(DRAMA_PATH):
         for st in sc:
             if st.get('audio'):
                 st['audio'] = '../' + st['audio']
+            for k in ('src', 'poster'):
+                if st.get(k) and not st[k].startswith(('../', 'http', 'data:')):
+                    st[k] = '../' + st[k]
     for m in dg['members'].values():
         if m.get('img') and not m['img'].startswith('../'):
             m['img'] = '../' + m['img']
