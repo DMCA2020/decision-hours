@@ -23,7 +23,7 @@ sources['solomonfull'] = ['המקור: אחד מול צה״ל, עמוד הפרק
 
 # members: id, display name, aliases (earliest match in the text wins), portrait, colour, grammatical gender
 MEMBERS = [
-    ('netanyahu', 'בנימין נתניהו', ['בנימין נתניהו', 'נתניהו', 'ראש הממשלה ·'], None, '#1f7aec', 'm'),  # no photo (user request)
+    ('netanyahu', 'בנימין נתניהו', ['בנימין נתניהו', 'נתניהו', 'ראש הממשלה ·'], 'netanyahu', '#1f7aec', 'm'),
     ('gallant', 'יואב גלנט', ['יואב גלנט', 'גלנט'], 'gallant', '#c4532d', 'm'),
     ('halevi', 'הרצי הלוי', ['הרצי הלוי', 'הלוי'], 'halevi', '#029d00', 'm'),
     ('ronen', 'רונן בר', ['רונן בר'], 'ronen', '#5e47de', 'm'),
@@ -54,6 +54,7 @@ MEMBERS = [
 ]
 
 CREDITS = {
+    'netanyahu': ('אבי אוחיון, לע״מ', 'https://commons.wikimedia.org/wiki/File:Netanyahu_official_portrait.jpg', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0'),
     'halevi': ('חטיבת דובר צה״ל', 'https://commons.wikimedia.org/wiki/File:Herzi_Halevi_RAV_ALUF.jpg', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0'),
     'ronen': ('עמוס בן גרשום, לע״מ', 'https://commons.wikimedia.org/wiki/File:Ronen_Bar,_October_2021_(GPODBG_7092)_(cropped).jpg', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0'),
     'gallant': ('שלומי אמסלם, ארכיון הכנסת', 'https://commons.wikimedia.org/wiki/File:Yoav_Gallant_(SHL_9620).jpg', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'),
