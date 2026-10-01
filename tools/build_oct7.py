@@ -530,7 +530,8 @@ if os.path.exists(DRAMA_PATH):
     drama_extra = json.load(open(DX_PATH, encoding='utf-8')) if os.path.exists(DX_PATH) else {}
     dg = copy.deepcopy(group)
     DLABEL = 'המחזה: נוסח בגוף ראשון על סמך המקור, לא ציטוט'
-    DRAMA_SKIP = {'R08'}  # Gallant's later account of 06:29 = T026 in the scene
+    DRAMA_SKIP = {'R08',  # Gallant's later account of 06:29 = T026 in the scene
+                  'X01', 'X18', 'X43', 'X67'}  # written lines that repeat what the same person says in a voice note (R01, R04, R05, R17)
     ROLE_NAMES = {'role_brigade_cmdrs': 'מפקדי החטיבות', 'role_soroka': 'סורוקה', 'role_iaf_heli': 'מסוקי חיל האוויר'}
 
     def dramatize(seq):
@@ -593,6 +594,8 @@ if os.path.exists(DRAMA_PATH):
     # drama only: transcript fixes the user asked for (ASR garble, opening narration)
     DRAMA_TRANSCRIPT = {
         'R02': lambda t: re.sub(r'\s*הפקו\s+', ' ', t[t.find('בשעות האחרונות'):] if 'בשעות האחרונות' in t else t),
+        # the 17:30 line moves under the voice note it duplicated
+        'R01': lambda t: ' '.join(m['text'] for m in drama_extra.get('X01', {}).get('messages', [])) or t,
     }
     for sc in [dg['history']] + dg['scenes']:
         for st in sc:
