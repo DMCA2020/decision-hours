@@ -596,6 +596,9 @@ if os.path.exists(DRAMA_PATH):
         'R02': lambda t: re.sub(r'\s*הפקו\s+', ' ', t[t.find('בשעות האחרונות'):] if 'בשעות האחרונות' in t else t),
         # the 17:30 line moves under the voice note it duplicated
         'R01': lambda t: ' '.join(m['text'] for m in drama_extra.get('X01', {}).get('messages', [])) or t,
+        'R04': lambda t: ' '.join(m['text'] for m in drama_extra.get('X18', {}).get('messages', [])) or t,
+        'R05': lambda t: ' '.join(m['text'] for m in drama_extra.get('X43', {}).get('messages', [])) or t,
+        'R17': lambda t: ' '.join(m['text'] for m in drama_extra.get('X67', {}).get('messages', [])) or t,
     }
     for sc in [dg['history']] + dg['scenes']:
         for st in sc:
