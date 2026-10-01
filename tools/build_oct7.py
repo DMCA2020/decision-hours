@@ -590,6 +590,14 @@ if os.path.exists(DRAMA_PATH):
     dg['pinned'] = 'גרסת המחזה: הדברים נוסחו מחדש בגוף ראשון על סמך המקורות. אלה אינם ציטוטים ואינן הודעות אמיתיות.'
     dg['lockText'] = 'גרסת המחזה. כל בועה מסומנת "המחזה" נוסחה בגוף ראשון על סמך מקור פומבי ואינה ציטוט. הודעות הנובה, ההקלטות והציטוטים נשארו כפי שפורסמו.'
     dg['sfx'] = '../' + group['sfx']
+    # drama only: transcript fixes the user asked for (ASR garble, opening narration)
+    DRAMA_TRANSCRIPT = {
+        'R02': lambda t: re.sub(r'\s*הפקו\s+', ' ', t[t.find('בשעות האחרונות'):] if 'בשעות האחרונות' in t else t),
+    }
+    for sc in [dg['history']] + dg['scenes']:
+        for st in sc:
+            if st.get('id') in DRAMA_TRANSCRIPT and st.get('transcript'):
+                st['transcript'] = DRAMA_TRANSCRIPT[st['id']](st['transcript'])
     for sc in [dg['history']] + dg['scenes']:
         for st in sc:
             if st.get('audio'):
