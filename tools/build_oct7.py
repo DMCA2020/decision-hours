@@ -501,7 +501,8 @@ group = {
     'readOnly': None,  # composer visible
     'loop': 'restart',
     'sfx': 'sfx/msg.mp3',
-    'interval': 6000,  # a new message every 6 seconds
+    'interval': 6000,
+    'revealAfter': 4,  # 4 messages arrive one by one, then the whole chat is shown  # a new message every 6 seconds
     'typingMax': 3200,
     'members': members,
     'history': [{'type': 'lock'}] + steps[:3],

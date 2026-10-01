@@ -132,10 +132,12 @@
   downBtn.addEventListener('click', () => { follow = true; downBtn.hidden = true; unread = 0; badge.textContent = ''; toBottom(true); });
 
   function place(el, opts = {}) {
+    if (opts.k != null) el.dataset.k = opts.k;
+    if (opts.quiet) { feed.appendChild(el); return; }
     const stick = opts.force || nearBottom();
     feed.appendChild(el);
-    // keep the DOM light on long sessions
-    while (feed.children.length > 220) feed.firstElementChild.remove();
+    // keep the DOM light on long sessions (not when the whole chat is shown)
+    if (!G.revealAfter) while (feed.children.length > 220) feed.firstElementChild.remove();
     if (stick) requestAnimationFrame(() => toBottom(false));
     else if (!opts.noCount) { unread++; badge.textContent = unread; downBtn.hidden = false; }
   }
@@ -524,7 +526,7 @@
   async function play(token, from = 0) {
     let loop = 0;
     while (token === runToken) {
-      let lastMin = null, day = 0;
+      let lastMin = null, day = 0, shown = 0;
       for (const scene of G.scenes) {
         for (let si = from; si < scene.length; si++) {
           const step = scene[si];
@@ -573,7 +575,8 @@
           }
           // ids repeat when scenes loop; keep them unique per loop
           const s = loop ? relabel(step, loop) : step;
-          applyStep(s, s.time || nowHM());
+          applyStep(s, s.time || nowHM(), { k: si });
+          if (G.revealAfter && isMsg && ++shown >= G.revealAfter) { revealRest(token, scene, si + 1, lastMin, day); return; }
         }
       }
       loop++;
@@ -583,6 +586,36 @@
       if (token === runToken) applyStep({ type: 'date', text: 'היום' }, nowHM());
     }
   }
+  // the rest of the chat appears at once (in chunks, so the page stays responsive); reader scrolls freely
+  function revealRest(token, scene, from, lastMin, day) {
+    let i = from;
+    const anchor = feed.lastElementChild;  // keep the reader on the last animated message
+    let userMoved = false;
+    const mark = () => { userMoved = true; };
+    chat.addEventListener('wheel', mark, { once: true, passive: true });
+    chat.addEventListener('touchmove', mark, { once: true, passive: true });
+    (function chunk() {
+      if (token !== runToken) return;
+      const end = Math.min(scene.length, i + 250);
+      for (; i < end; i++) {
+        const st = scene[i];
+        if (G.pacing === 'drama') {
+          if (st.type === 'date') { day = /6 ב/.test(st.text) ? 0 : 1; lastMin = null; }
+          const mm = /^(\d\d):(\d\d)$/.exec(st.time || '');
+          if (mm && MSG_TYPES.has(st.type) && st.from) {
+            const now = day * 1440 + (+mm[1]) * 60 + (+mm[2]);
+            if (lastMin != null && now - lastMin >= 45) applyStep({ type: 'skip', text: st.time }, st.time, { quiet: true, history: true });
+            lastMin = now;
+          }
+        }
+        applyStep(st, st.time || '', { quiet: true, history: true, k: i });
+      }
+      if (anchor && !userMoved) anchor.scrollIntoView({ block: 'end' });
+      if (i < scene.length) setTimeout(chunk, 0);
+      else { hideTyping(); setSub(defaultSub, false); downBtn.hidden = false; badge.textContent = ''; }
+    })();
+  }
+
   function relabel(step, loop) {
     const s = Object.assign({}, step);
     ['id', 'reply', 'to'].forEach((k) => { if (s[k] && s[k] !== '__last') s[k] = s[k] + '#' + loop; });
@@ -604,7 +637,12 @@
     const days = [...new Set(marks.map((m) => m.day))];
     openSheet('<h3>קפיצה לשעה</h3>' + days.map((d) => `<h4>${esc(d)}</h4><div class="hours">` +
       marks.filter((m) => m.day === d).map((m) => `<button data-k="${m.k}">${m.h}:00</button>`).join('') + '</div>').join(''));
-    sheetBody.querySelectorAll('.hours button').forEach((b) => b.addEventListener('click', () => { closeSheet(); startAt = +b.dataset.k; paused = false; start(); }));
+    sheetBody.querySelectorAll('.hours button').forEach((b) => b.addEventListener('click', () => {
+      closeSheet();
+      const el = feed.querySelector(`[data-k="${b.dataset.k}"]`);
+      if (el) { el.scrollIntoView({ block: 'start' }); return; }  // whole chat shown: just scroll there
+      startAt = +b.dataset.k; paused = false; start();
+    }));
   }
   let startAt = 0;
 
