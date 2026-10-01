@@ -201,5 +201,13 @@
    "text": "מה קורה עם הכוחות לבארי? מה קורה עם זה?"
   },
   "file": "media/res/amit.m4a"
+ },
+ {
+  "match": {
+   "time": null,
+   "community": "בארי",
+   "text": "מוקדנית מד\"א מנחה בטלפון ביצוע החייאה"
+  },
+  "file": "media/res/mda_cpr.m4a"
  }
 ]
