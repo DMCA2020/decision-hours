@@ -427,6 +427,24 @@ for st in steps:
 merged += [p[1] for p in placed]
 steps = merged
 
+# ---- Netanyahu is not a participant in this chat (user request): drop his messages and his quoted lines ----
+EXCLUDE_MEMBERS = {'netanyahu'}
+
+
+def drop_excluded(seq):
+    out = []
+    for st in seq:
+        if st.get('from') in EXCLUDE_MEMBERS:
+            continue
+        if st.get('quotes'):
+            q = [x for x in st['quotes'] if 'נתניהו' not in (x.get('label') or '')]
+            if not q and not st.get('text') and st['quotes']:
+                continue
+            st = dict(st, quotes=q)
+        out.append(st)
+    return out
+
+
 def chrono(seq):
     """Stable chronological order inside each day; items without a clock follow the item before them."""
     out, day, last = [], 0, -1
@@ -453,7 +471,7 @@ def chrono(seq):
     return [t[2] for t in out]
 
 
-steps = chrono(steps)
+steps = drop_excluded(chrono(steps))
 
 members = {'me': {'name': 'את/ה', 'color': '#00a884', 'g': 'm'}}
 for mid, name, _, portrait, color, g in MEMBERS:
@@ -463,6 +481,8 @@ for mid, name, _, portrait, color, g in MEMBERS:
             m['img'] = f'portraits/{portrait}.jpg'
         members[mid] = m
 
+for _m in EXCLUDE_MEMBERS:
+    members.pop(_m, None)
 members.update(rec_members)
 members.update(extra_members)
 members.update(nova_members)  # after the officials, so the header list starts with them
@@ -568,6 +588,8 @@ if os.path.exists(DRAMA_PATH):
                 continue
             for i, msg in enumerate(d['messages']):
                 who = msg['from']
+                if who in EXCLUDE_MEMBERS:
+                    continue
                 if who not in dg['members']:
                     if who in dict((m[0], m) for m in MEMBERS):
                         mm = next(m for m in MEMBERS if m[0] == who)
