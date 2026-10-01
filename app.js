@@ -129,7 +129,10 @@
   });
   ['wheel', 'touchmove', 'pointerdown', 'keydown'].forEach((ev) =>
     chat.addEventListener(ev, () => { userAt = performance.now(); }, { passive: true }));
-  downBtn.addEventListener('click', () => { follow = true; downBtn.hidden = true; unread = 0; badge.textContent = ''; toBottom(true); });
+  downBtn.addEventListener('click', () => {
+    if (typeof lazy !== 'undefined' && lazy.on) { toBottom(true); return; }
+    follow = true; downBtn.hidden = true; unread = 0; badge.textContent = ''; toBottom(true);
+  });
 
   function place(el, opts = {}) {
     if (opts.k != null) el.dataset.k = opts.k;
@@ -586,33 +589,55 @@
       if (token === runToken) applyStep({ type: 'date', text: 'היום' }, nowHM());
     }
   }
-  // the rest of the chat appears at once (in chunks, so the page stays responsive); reader scrolls freely
+  // after the live start: WhatsApp-style "unread messages" bar, then infinite scroll down (~30 at a time)
+  const lazy = { on: false };
+  const sentinel = document.createElement('div');
+  sentinel.className = 'sentinel';
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver((en) => { if (en.some((x) => x.isIntersecting)) loadMore(30); }, { root: chat, rootMargin: '0px 0px 900px 0px' }) : null;
+  function remainingMsgs() {
+    let n = 0;
+    for (let j = lazy.i; j < lazy.scene.length; j++) if (MSG_TYPES.has(lazy.scene[j].type) && lazy.scene[j].from) n++;
+    return n;
+  }
   function revealRest(token, scene, from, lastMin, day) {
-    let i = from;
-    const anchor = feed.lastElementChild;  // keep the reader on the last animated message
-    let userMoved = false;
-    const mark = () => { userMoved = true; };
-    chat.addEventListener('wheel', mark, { once: true, passive: true });
-    chat.addEventListener('touchmove', mark, { once: true, passive: true });
-    (function chunk() {
-      if (token !== runToken) return;
-      const end = Math.min(scene.length, i + 250);
-      for (; i < end; i++) {
-        const st = scene[i];
-        if (G.pacing === 'drama') {
-          if (st.type === 'date') { day = /6 ב/.test(st.text) ? 0 : 1; lastMin = null; }
-          const mm = /^(\d\d):(\d\d)$/.exec(st.time || '');
-          if (mm && MSG_TYPES.has(st.type) && st.from) {
-            const now = day * 1440 + (+mm[1]) * 60 + (+mm[2]);
-            if (lastMin != null && now - lastMin >= 45) applyStep({ type: 'skip', text: st.time }, st.time, { quiet: true, history: true });
-            lastMin = now;
-          }
+    Object.assign(lazy, { on: true, token, scene, i: from, lastMin, day });
+    hideTyping(); setSub(defaultSub, false);
+    const left = remainingMsgs();
+    if (left) place(chip('unread', `${left.toLocaleString('he-IL')} הודעות שלא נקראו`), { quiet: true });
+    feed.appendChild(sentinel);
+    loadMore(30);
+    if (io) io.observe(sentinel);
+  }
+  function loadMore(n) {
+    if (!lazy.on || lazy.token !== runToken) return;
+    const { scene } = lazy;
+    let added = 0;
+    while (lazy.i < scene.length && added < n) {
+      const st = scene[lazy.i];
+      if (G.pacing === 'drama') {
+        if (st.type === 'date') { lazy.day = /6 ב/.test(st.text) ? 0 : 1; lazy.lastMin = null; }
+        const mm = /^(\d\d):(\d\d)$/.exec(st.time || '');
+        if (mm && MSG_TYPES.has(st.type) && st.from) {
+          const now = lazy.day * 1440 + (+mm[1]) * 60 + (+mm[2]);
+          if (lazy.lastMin != null && now - lazy.lastMin >= 45) applyStep({ type: 'skip', text: st.time }, st.time, { quiet: true, history: true });
+          lazy.lastMin = now;
         }
-        applyStep(st, st.time || '', { quiet: true, history: true, k: i });
       }
-      if (anchor && !userMoved) anchor.scrollIntoView({ block: 'end' });
-      if (i < scene.length) setTimeout(chunk, 0);
-      else { hideTyping(); setSub(defaultSub, false); downBtn.hidden = false; badge.textContent = ''; }
+      applyStep(st, st.time || '', { quiet: true, history: true, k: lazy.i });
+      if (MSG_TYPES.has(st.type) && st.from) added++;
+      lazy.i++;
+    }
+    feed.appendChild(sentinel);  // keep the trigger at the end
+    const left = remainingMsgs();
+    badge.textContent = left ? (left > 999 ? '999+' : left) : '';
+    if (lazy.i >= scene.length) { lazy.on = false; if (io) io.unobserve(sentinel); sentinel.remove(); }
+  }
+  // load until message k exists (for jump-to-hour), a chunk per frame so it never freezes
+  function loadUntil(k, done) {
+    (function step() {
+      if (!lazy.on || feed.querySelector(`[data-k="${k}"]`)) return done();
+      loadMore(60);
+      setTimeout(step, 0);
     })();
   }
 
@@ -639,9 +664,11 @@
       marks.filter((m) => m.day === d).map((m) => `<button data-k="${m.k}">${m.h}:00</button>`).join('') + '</div>').join(''));
     sheetBody.querySelectorAll('.hours button').forEach((b) => b.addEventListener('click', () => {
       closeSheet();
-      const el = feed.querySelector(`[data-k="${b.dataset.k}"]`);
-      if (el) { el.scrollIntoView({ block: 'start' }); return; }  // whole chat shown: just scroll there
-      startAt = +b.dataset.k; paused = false; start();
+      const k = +b.dataset.k;
+      const go = () => { const el = feed.querySelector(`[data-k="${k}"]`); if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
+      if (feed.querySelector(`[data-k="${k}"]`)) return go();
+      if (lazy.on && k >= lazy.i) return loadUntil(k, go);   // further down: load up to it, then scroll
+      startAt = k; paused = false; start();
     }));
   }
   let startAt = 0;
@@ -651,6 +678,7 @@
     hideTyping();
     feed.innerHTML = '';
     byId.clear(); lastFrom = null; lastId = null; unread = 0; badge.textContent = '';
+    lazy.on = false; if (io) io.unobserve(sentinel);
     const ctxSteps = (G.scenes[0] || []).slice(0, startAt);
     if (startAt > 0) {
       // jumped to an hour: show the date and the last messages before it, then play on
