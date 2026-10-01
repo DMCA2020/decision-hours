@@ -166,8 +166,8 @@
     return `<span class="quote" data-ref="${esc(refId)}" style="--qc:${m.color}"><div class="qn">${fmt(name)}</div><div class="qt">${esc(t)}</div></span>`;
   }
 
-  function metaHTML(time, out, edited) {
-    return `<span class="meta">${edited ? '<span class="ed">נערכה</span>' : ''}<span class="t">${time}</span>${out ? `<span class="tk">${ICON.clock}</span>` : ''}</span>`;
+  function metaHTML(time, out, edited, tag) {
+    return `<span class="meta">${tag ? `<span class="ed">${esc(tag)}</span>` : ''}${edited ? '<span class="ed">נערכה</span>' : ''}<span class="t">${time}</span>${out ? `<span class="tk">${ICON.clock}</span>` : ''}</span>`;
   }
 
   function bubble(step, time) {
@@ -199,7 +199,7 @@
         `<div class="voice"><span class="play">${ICON.play}</span><span class="wave">${bars}</span>` +
         `<span class="vav" style="background:${m.color}">${avatarHTML(step.from)}<i>${ICON.mic}</i></span></div>` +
         `<span class="dur">${esc(step.dur || '0:12')}</span>` +
-        (step.transcript ? `<div class="vt"><div class="kind">${esc(step.kind || '')}</div>${step.note ? `<div class="tnote">🕒 ${fmt(step.note)}</div>` : ''}<div class="vtt" dir="auto">${linkify(step.transcript)}</div>` +
+        (step.transcript ? `<div class="vt">${step.note ? `<div class="tnote">🕒 ${fmt(step.note)}</div>` : ''}<div class="vtt" dir="auto">${linkify(step.transcript)}</div>` +
           (step.sources ? `<div class="srcs">${step.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">▶︎ ${esc(s.label)} ↗</a>`).join('')}</div>` : '') + '</div>' : '') +
         metaHTML(time, out);
       if (step.info) b.classList.add('rich');
@@ -213,7 +213,6 @@
       if (jumbo) b.classList.add('jumbo');
       inner = (showSender ? senderHTML(step.from) : '') +
         (step.reply ? quoteHTML(step.reply) : '') +
-        (step.kind ? `<div class="kind">${esc(step.kind)}</div>` : '') +
         (step.memorial ? `<div class="memorial">🕯️ ${esc(step.memorial)}</div>` : '') +
         (step.note ? `<div class="tnote">🕒 ${fmt(step.note)}</div>` : '') +
         `<span class="body" dir="auto">${linkify(step.text || '')}</span>` +
@@ -221,7 +220,7 @@
         (step.quotes ? (step.quotesNote ? `<div class="qnote">${esc(step.quotesNote)}</div>` : '') + step.quotes.map((q) => `<blockquote class="pq"><span>${esc(q.label)}</span>״${esc(q.text)}״</blockquote>`).join('') : '') +
         (step.sources && step.sources.length ? `<div class="srcs">${step.sources.slice(0, 2).map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">📄 ${esc(s.label)} ↗</a>`).join('')}${step.sources.length > 2 ? `<span class="more">+${step.sources.length - 2} מקורות</span>` : ''}</div>` : '') +
         (step.info ? '' : '<span class="spacer"></span>') +
-        metaHTML(time, out);
+        metaHTML(time, out, false, step.tag);
       if (step.info) b.classList.add('rich');
       if (step.memorial) b.classList.add('real');
     }

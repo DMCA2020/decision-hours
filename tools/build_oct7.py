@@ -176,7 +176,7 @@ if os.path.exists(NOVA_PATH):
         placed.append(((1, mins, sub), {
             'from': mid, 'id': 'N' + str(sum(1 for k, x in placed if x['id'].startswith('N')) + 1).zfill(2),
             'time': f'{int(m.group(1)):02d}:{m.group(2)}' if m else 'בוקר',
-            **({} if m else {'note': 'שעה לא פורסמה. לפי המקור, מאותו בוקר'}),
+            'note': (f'אל {to}' if to else '') + ('' if m else ('. ' if to else '') + 'שעה לא פורסמה, מאותו בוקר'),
             'kind': 'הודעה אמיתית שפורסמה' + (f' · נשלחה אל {to}' if to else '') + (' · תורגמה במקור' if n.get('lang') == 'en' else ''),
             'text': text, 'memorial': clean(n.get('fate') or ''),
             'sources': [{'label': n['source_title'], 'url': n['source_url']}] + [{'label': a, 'url': b} for a, b in n.get('extra_sources', [])],
@@ -365,7 +365,7 @@ group = {
     'lockText': 'שחזור תחקירי מתוך מקורות פומביים. אף הודעה כאן לא נשלחה במציאות; כל בועה מקושרת למקור שלה.',
     'readOnly': None,  # composer visible
     'loop': 'restart',
-    'interval': 5000,  # a new message every 5 seconds
+    'interval': 6000,  # a new message every 6 seconds
     'typingMax': 3200,
     'members': members,
     'history': [{'type': 'lock'}] + steps[:3],
