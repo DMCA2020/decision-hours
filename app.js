@@ -185,9 +185,10 @@
     row.className = `row ${out ? 'out' : 'in'}${first ? ' first' : ''}`;
     const id = step.id || ('m' + (++autoId));
     row.dataset.id = id;
+    if (step.from) row.dataset.from = step.from;
 
     let inner = '';
-    const showSender = !out && first;
+    const showSender = !out && first && !privateChat;
     const b = document.createElement('div');
     b.className = 'bubble';
 
@@ -682,6 +683,136 @@
     }));
   }
   let startAt = 0;
+
+  /* ---------- chats list, contact cards, private chats (like WhatsApp) ---------- */
+  let privateChat = false, inMain = true, savedMain = null;
+  const ALL = () => G.history.concat(G.scenes[0] || []);
+  const isVictim = (id) => /^(nova_|res_)/.test(id || '');
+  const isMsg = (st) => MSG_TYPES.has(st.type) && st.from;
+  const roleOf = (id) => (G.roles || {})[id] || (isVictim(id) ? '' : '');
+  function filtered(pred, chips) {
+    // keep date chips only when a matching message follows before the next date
+    const out = []; let pendingDate = null;
+    for (const st of ALL()) {
+      if (st.type === 'date') { pendingDate = st; continue; }
+      if (isMsg(st) ? pred(st) : (chips && chips(st))) {
+        if (pendingDate) { out.push(pendingDate); pendingDate = null; }
+        out.push(st);
+      }
+    }
+    return out;
+  }
+  const CHATS = {
+    sec: { name: 'הדרג הביטחוני', avatar: '🛡️', bg: '#37474f', list: () => filtered((st) => !isVictim(st.from)) },
+    vic: { name: 'קורבנות 7 באוקטובר', avatar: '🕯️', bg: '#263238', list: () => filtered((st) => isVictim(st.from), (st) => /^S0[123]$/.test(st.id || '')) },
+  };
+  function setHeader(name, avatarHtml, bg, sub) {
+    $('#groupName').textContent = name;
+    gav.style.background = bg || '#dfe5e7';
+    gav.innerHTML = avatarHtml;
+    setSub(sub, false);
+  }
+  function saveMain() {
+    if (!inMain) return;
+    const frag = document.createDocumentFragment();
+    while (feed.firstChild) frag.appendChild(feed.firstChild);
+    savedMain = { frag, lazy: { ...lazy }, top: chat.scrollTop };
+    inMain = false;
+  }
+  function openList(title, avatarHtml, bg, sub, list, opts = {}) {
+    saveMain();
+    runToken++; hideTyping(true);
+    if (io) io.unobserve(sentinel);
+    feed.innerHTML = ''; lastFrom = null; unread = 0; badge.textContent = '';
+    privateChat = !!opts.private;
+    root.classList.toggle('private', privateChat);
+    setHeader(title, avatarHtml, bg, sub);
+    Object.assign(lazy, { on: true, token: runToken, scene: list, i: 0, lastMin: null, day: 0 });
+    feed.appendChild(sentinel);
+    loadMore(25);
+    if (io) io.observe(sentinel);
+    chat.scrollTop = 0;
+  }
+  function openChat(key) {
+    const c = CHATS[key]; const list = c.list();
+    const people = new Set(list.filter(isMsg).map((s) => s.from));
+    openList(c.name, `<span>${c.avatar}</span>`, c.bg, `${people.size} משתתפים`, list);
+  }
+  function openPrivate(id) {
+    if (isVictim(id)) return openChat('vic');
+    const m = G.members[id];
+    const list = filtered((st) => st.from === id);
+    openList(m.name, avatarHTML(id), m.color, roleOf(id) || 'לחצו כאן לפרטי איש הקשר', list, { private: true });
+    privateId = id;
+  }
+  let privateId = null;
+  function backToMain() {
+    if (inMain) return;
+    runToken++;
+    if (io) io.unobserve(sentinel);
+    privateChat = false; root.classList.remove('private'); privateId = null;
+    feed.innerHTML = '';
+    inMain = true;
+    $('#groupName').textContent = G.name;
+    gav.style.background = G.avatarBg || '#dfe5e7';
+    gav.innerHTML = G.avatar ? `<span>${G.avatar}</span>` : ICON.group;
+    setSub(defaultSub, false);
+    if (savedMain && savedMain.lazy.on) {
+      feed.appendChild(savedMain.frag);
+      Object.assign(lazy, savedMain.lazy, { token: runToken });
+      feed.appendChild(sentinel);
+      if (io) io.observe(sentinel);
+      chat.scrollTop = savedMain.top;
+    } else start();
+  }
+  // contact card
+  function openContact(id) {
+    const m = G.members[id]; if (!m) return;
+    const n = ALL().filter((st) => st.from === id && isMsg(st)).length;
+    const vic = isVictim(id);
+    openSheet(`<div class="contact"><div class="cav" style="background:${m.color}">${avatarHTML(id)}</div>
+      <h3>${esc(m.name)}</h3><p class="crole">${esc(roleOf(id) || (vic ? 'קורבנות 7 באוקטובר' : 'הדרג הביטחוני'))}</p>
+      <p class="ccount">${n.toLocaleString('he-IL')} הודעות</p>
+      <button class="cmsg" data-id="${esc(id)}">💬 ${vic ? 'לצ׳אט קורבנות 7 באוקטובר' : 'הודעה'}</button></div>`);
+    sheetBody.querySelector('.cmsg').addEventListener('click', () => { closeSheet(); openPrivate(id); });
+  }
+  feed.addEventListener('click', (e) => {
+    const hit = e.target.closest('.av, .sender');
+    if (!hit) return;
+    const row = hit.closest('.row');
+    if (!row || !row.dataset.from || row.classList.contains('typing')) return;
+    e.stopPropagation();
+    openContact(row.dataset.from);
+  }, true);
+  // chats list (back arrow)
+  const chats = document.createElement('div');
+  chats.className = 'chats'; chats.hidden = true;
+  document.querySelector('.screen').appendChild(chats);
+  function lastOf(list) { const m = [...list].reverse().find(isMsg); return m ? (m.text || m.transcript || (m.type === 'video' ? '🎥 סרטון' : m.type === 'image' ? '📷 תמונה' : m.type === 'voice' ? '🎤 הודעה קולית' : '')).slice(0, 60) : ''; }
+  function openChats() {
+    const sec = [...new Set(ALL().filter((s) => isMsg(s) && !isVictim(s.from)).map((s) => s.from))]
+      .map((id) => ({ id, n: ALL().filter((s) => s.from === id).length })).sort((a, b) => b.n - a.n);
+    const row = (key, name, av, bg, sub, extra = '') => `<button class="chatrow" data-key="${esc(key)}"><span class="cav" style="background:${bg}">${av}</span><span class="cbody"><b>${esc(name)}</b><small>${esc(sub)}</small></span>${extra}</button>`;
+    chats.innerHTML = `<div class="chats-head"><button class="icon chats-back" aria-label="סגירה"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button><b>צ׳אטים</b></div><div class="chats-list">` +
+      row('main', G.name, `<span>${G.avatar || ''}</span>`, G.avatarBg, 'הקבוצה המלאה') +
+      row('sec', CHATS.sec.name, '<span>🛡️</span>', CHATS.sec.bg, lastOf(CHATS.sec.list())) +
+      row('vic', CHATS.vic.name, '<span>🕯️</span>', CHATS.vic.bg, lastOf(CHATS.vic.list())) +
+      '<div class="chats-sec">אנשי קשר</div>' +
+      sec.map(({ id, n }) => row('m:' + id, G.members[id].name, avatarHTML(id), G.members[id].color, roleOf(id) || `${n} הודעות`)).join('') + '</div>';
+    chats.hidden = false;
+    chats.querySelector('.chats-back').addEventListener('click', () => { chats.hidden = true; });
+    chats.querySelectorAll('.chatrow').forEach((b) => b.addEventListener('click', () => {
+      chats.hidden = true;
+      const k = b.dataset.key;
+      if (k === 'main') backToMain(); else if (k.startsWith('m:')) openPrivate(k.slice(2)); else openChat(k);
+    }));
+  }
+  document.querySelector('.topbar .back').addEventListener('click', (e) => { e.stopPropagation(); openChats(); });
+  // header tap in a private chat opens that contact
+  document.querySelector('.gtitle').addEventListener('click', (e) => {
+    if (privateId) { e.stopImmediatePropagation(); openContact(privateId); }
+  }, true);
+
 
   function start() {
     runToken++;

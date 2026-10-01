@@ -522,7 +522,10 @@ group = {
     'loop': 'restart',
     'sfx': 'sfx/msg.mp3',
     'interval': 6000,
-    'revealAfter': 4,  # 4 messages arrive one by one, then the whole chat is shown  # a new message every 6 seconds
+    'revealAfter': 4,
+    'roles': {'halevi': 'הרמטכ״ל', 'ronen': 'ראש השב״כ', 'gallant': 'שר הביטחון', 'netanyahu': 'ראש הממשלה', 'gil': 'המזכיר הצבאי של ראש הממשלה',
+              'finkelman': 'אלוף פיקוד הדרום', 'basiuk': 'ראש אגף המבצעים', 'binder': 'ראש חטיבת המבצעים', 'tomer': 'מפקד חיל האוויר',
+              'shabtai': 'המפכ״ל', 'haliva': 'ראש אמ״ן', 'rosenfeld': 'מפקד אוגדת עזה', 'cohen': 'מפקד מחוז דרום במשטרה', 'bin': 'מנכ״ל מד״א'},  # 4 messages arrive one by one, then the whole chat is shown  # a new message every 6 seconds
     'typingMax': 3200,
     'members': members,
     'history': [{'type': 'lock'}] + steps[:3],
