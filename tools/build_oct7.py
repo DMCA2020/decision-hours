@@ -234,7 +234,7 @@ if os.path.exists(NM_PATH) and os.path.exists(NMP_PATH):
             dur = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', os.path.join(HERE, pl['file'])], capture_output=True, text=True).stdout.strip()
             st.update(type='voice', audio=pl['file'], dur='%d:%02d' % divmod(round(float(dur or 0)), 60), transcript=tr)
         elif x['type'] == 'photo':
-            st.update(type='image', src=pl['file'], text='')
+            st.update(type='image', src=pl['file'], text=pl.get('caption', ''))
         else:
             dur = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', os.path.join(HERE, pl['file'])], capture_output=True, text=True).stdout.strip()
             st.update(type='video', src=pl['file'], poster=pl.get('poster', ''), dur='%d:%02d' % divmod(round(float(dur or 0)), 60))
