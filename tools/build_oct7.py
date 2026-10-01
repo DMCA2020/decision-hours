@@ -428,7 +428,7 @@ merged += [p[1] for p in placed]
 steps = merged
 
 # ---- Netanyahu is not a participant in this chat (user request): drop his messages and his quoted lines ----
-EXCLUDE_MEMBERS = {'netanyahu'}
+EXCLUDE_MEMBERS = set()  # was {'netanyahu'}; restored at the user's request
 
 
 def drop_excluded(seq):
@@ -436,7 +436,7 @@ def drop_excluded(seq):
     for st in seq:
         if st.get('from') in EXCLUDE_MEMBERS:
             continue
-        if st.get('quotes'):
+        if st.get('quotes') and 'netanyahu' in EXCLUDE_MEMBERS:
             q = [x for x in st['quotes'] if 'נתניהו' not in (x.get('label') or '')]
             if not q and not st.get('text') and st['quotes']:
                 continue
