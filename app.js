@@ -512,10 +512,11 @@
       case 'edit': editMsg(step.to, step.text); return;
       case 'delete': deleteMsg(step.to); return;
     }
+    const prevFrom = lastFrom;  // sound only on the first of several messages in a row from the same sender
     const row = bubble(step, time);
     place(row, opts);
     if (opts.history && step.from === 'me') readTicksNow(row);
-    if (!opts.history) blip(step.from === 'me' ? 'out' : (step.type === 'voice' || step.type === 'video' || step.type === 'image') ? 'media' : 'in');
+    if (!opts.history && step.from !== prevFrom) blip(step.from === 'me' ? 'out' : (step.type === 'voice' || step.type === 'video' || step.type === 'image') ? 'media' : 'in');
   }
 
   const MSG_TYPES = new Set([undefined, 'image', 'voice', 'poll', 'video']);
