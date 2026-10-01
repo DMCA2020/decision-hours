@@ -531,7 +531,8 @@ if os.path.exists(DRAMA_PATH):
     dg = copy.deepcopy(group)
     DLABEL = 'המחזה: נוסח בגוף ראשון על סמך המקור, לא ציטוט'
     DRAMA_SKIP = {'R08',  # Gallant's later account of 06:29 = T026 in the scene
-                  'X01', 'X18', 'X43', 'X67'}  # written lines that repeat what the same person says in a voice note (R01, R04, R05, R17)
+                  'X01', 'X18', 'X43', 'X67',
+                  'X15', 'X16'}  # Feldman's 03:20 lines = the content Halevi tells in his 03:10 voice note (R02)  # written lines that repeat what the same person says in a voice note (R01, R04, R05, R17)
     ROLE_NAMES = {'role_brigade_cmdrs': 'מפקדי החטיבות', 'role_soroka': 'סורוקה', 'role_iaf_heli': 'מסוקי חיל האוויר'}
 
     def dramatize(seq):
@@ -600,6 +601,9 @@ if os.path.exists(DRAMA_PATH):
         'R05': lambda t: ' '.join(m['text'] for m in drama_extra.get('X43', {}).get('messages', [])) or t,
         'R17': lambda t: ' '.join(m['text'] for m in drama_extra.get('X67', {}).get('messages', [])) or t,
     }
+    DVT = os.path.join(HERE, 'data', 'drama_voice_text.json')
+    for k, v in (json.load(open(DVT, encoding='utf-8')) if os.path.exists(DVT) else {}).items():
+        DRAMA_TRANSCRIPT[k] = (lambda txt: (lambda t: txt))(v)  # clean first-person text under each voice note
     for sc in [dg['history']] + dg['scenes']:
         for st in sc:
             if st.get('id') in DRAMA_TRANSCRIPT and st.get('transcript'):
