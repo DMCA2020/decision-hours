@@ -467,6 +467,9 @@
   }
   function blip() {
     if (!sound || !unlocked || !sfxBuf) return;
+    // stay quiet while a voice message or video is playing
+    if (current && !current.paused) return;
+    if ([...document.querySelectorAll('.vbox video')].some((v) => !v.paused)) return;
     try {
       const c = ctx(), src = c.createBufferSource(), g = c.createGain();
       src.buffer = sfxBuf; g.gain.value = .7;
