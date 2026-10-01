@@ -521,12 +521,12 @@
 
   const MSG_TYPES = new Set([undefined, 'image', 'voice', 'poll', 'video']);
 
-  async function play(token) {
+  async function play(token, from = 0) {
     let loop = 0;
     while (token === runToken) {
       let lastMin = null, day = 0;
       for (const scene of G.scenes) {
-        for (let si = 0; si < scene.length; si++) {
+        for (let si = from; si < scene.length; si++) {
           const step = scene[si];
           if (token !== runToken) return;
           const isMsg = MSG_TYPES.has(step.type) && step.from;
@@ -577,6 +577,7 @@
         }
       }
       loop++;
+      from = 0;
       await sleep(9000);
       if (G.loop === 'restart') { if (token === runToken) start(); return; }
       if (token === runToken) applyStep({ type: 'date', text: 'היום' }, nowHM());
@@ -588,15 +589,45 @@
     return s;
   }
 
+  // jump to an hour: show the hours that have messages; picking one replays the chat from there
+  function openJump() {
+    // hours per day, in order; each button jumps to the first message of that hour on that day
+    const steps = G.scenes[0] || [];
+    const marks = [];
+    const hd = [...G.history].reverse().find((s) => s.type === 'date');
+    let day = hd ? hd.text.split(',')[0] : '', seen = new Set();
+    steps.forEach((st, k) => {
+      if (st.type === 'date') { day = st.text.split(',')[0]; return; }
+      const h = (/^(\d\d):/.exec(st.time || '') || [])[1];
+      if (h && !seen.has(day + h)) { seen.add(day + h); marks.push({ day, h, k }); }
+    });
+    const days = [...new Set(marks.map((m) => m.day))];
+    openSheet('<h3>קפיצה לשעה</h3>' + days.map((d) => `<h4>${esc(d)}</h4><div class="hours">` +
+      marks.filter((m) => m.day === d).map((m) => `<button data-k="${m.k}">${m.h}:00</button>`).join('') + '</div>').join(''));
+    sheetBody.querySelectorAll('.hours button').forEach((b) => b.addEventListener('click', () => { closeSheet(); startAt = +b.dataset.k; paused = false; start(); }));
+  }
+  let startAt = 0;
+
   function start() {
     runToken++;
     hideTyping();
     feed.innerHTML = '';
     byId.clear(); lastFrom = null; lastId = null; unread = 0; badge.textContent = '';
-    G.history.forEach((st) => applyStep(st, st.time || '', { history: true, force: true, instant: true, noCount: true }));
+    const ctxSteps = (G.scenes[0] || []).slice(0, startAt);
+    if (startAt > 0) {
+      // jumped to an hour: show the date and the last messages before it, then play on
+      const lastDate = [...ctxSteps].reverse().find((s) => s.type === 'date');
+      G.history.filter((s) => s.type === 'lock').forEach((st) => applyStep(st, '', { history: true, force: true, instant: true, noCount: true }));
+      if (lastDate) applyStep(lastDate, '', { history: true, force: true, instant: true, noCount: true });
+      ctxSteps.slice(-25).filter((s) => s.type !== 'date').forEach((st) => applyStep(st, st.time || '', { history: true, force: true, instant: true, noCount: true }));
+    } else {
+      G.history.forEach((st) => applyStep(st, st.time || '', { history: true, force: true, instant: true, noCount: true }));
+    }
     requestAnimationFrame(() => toBottom(false));
-    play(runToken);
+    play(runToken, startAt);
+    startAt = 0;
   }
+
 
   /* ---------- info sheet ---------- */
   const sheet = $('#sheet'), sheetBody = $('#sheetBody');
@@ -680,6 +711,7 @@
     if (act === 'sound') { sound = !sound; store('wa.sound', sound ? '1' : '0'); $('#soundLbl').textContent = sound ? 'פעיל' : 'כבוי'; if (!sound) hint.remove(); blip('in'); }
     if (act === 'pause') { paused = !paused; b.textContent = paused ? 'המשך' : 'השהיה'; }
     if (act === 'restart') { paused = false; start(); }
+    if (act === 'jump') openJump();
   });
 
   start();

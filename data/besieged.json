@@ -1,239 +1,5 @@
 [
  {
-  "community": "בארי",
-  "sender": "אלה",
-  "sender_fate": "",
-  "time": "00:07",
-  "text": "אתם שומעים צעקות בערבית?",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: אוהד שלח צוואה בוואטסאפ ונחטף עם אשתו | משפחת בן עמי",
-  "source_url": "https://710360.kan.org.il/beeri/ben-ami",
-  "group": "התכתבות בין אוהד לבתו אלה",
-  "type": "text",
-  "note": "Time as printed by Kan (00:07 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "בארי",
-  "sender": "איתי",
-  "sender_fate": "",
-  "time": "00:23",
-  "text": "שרפו לנו את הבית, ברחנו מהחלון. \nמתחבאים בחוץ",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: המשפחה שהסתתרה מאחורי עצים וענפים | משפחת שאבי",
-  "source_url": "https://710360.kan.org.il/beeri/shabi",
-  "group": "מתוך התכתבות בקבוצת הוואטסאפ המשפחתית",
-  "type": "text",
-  "note": "Time as printed by Kan (00:23 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "עדן",
-  "sender_fate": "",
-  "time": "00:34",
-  "text": "סבתא שואלת מה קרה בניר עוז",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
-  "source_url": "https://710360.kan.org.il/nir-oz/maor",
-  "group": "התכתבות בין לי ובתה, עדן",
-  "type": "text",
-  "note": "Time as printed by Kan (00:34 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "לי",
-  "sender_fate": "",
-  "time": "00:34",
-  "text": "עדיין קורה. חדירת מחבלים",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
-  "source_url": "https://710360.kan.org.il/nir-oz/maor",
-  "group": "התכתבות בין לי ובתה, עדן",
-  "type": "text",
-  "note": "Time as printed by Kan (00:34 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "עדן",
-  "sender_fate": "",
-  "time": "00:35",
-  "text": "איפה הצבא",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
-  "source_url": "https://710360.kan.org.il/nir-oz/maor",
-  "group": "התכתבות בין לי ובתה, עדן",
-  "type": "text",
-  "note": "Time as printed by Kan (00:35 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "לי",
-  "sender_fate": "",
-  "time": "00:35",
-  "text": "לא יודעת",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
-  "source_url": "https://710360.kan.org.il/nir-oz/maor",
-  "group": "התכתבות בין לי ובתה, עדן",
-  "type": "text",
-  "note": "Time as printed by Kan (00:35 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "עדן",
-  "sender_fate": "",
-  "time": "00:35",
-  "text": "תבדקיייי\nפליזזזז",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
-  "source_url": "https://710360.kan.org.il/nir-oz/maor",
-  "group": "התכתבות בין לי ובתה, עדן",
-  "type": "text",
-  "note": "Time as printed by Kan (00:35 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "רותם",
-  "sender_fate": "",
-  "time": "00:44",
-  "text": "הם שורפים אצלנו. יקיר נפצע. בבקשה שמישהו יגיע",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: \"זה כאילו היה ביקום מקביל, מעבר לכל הגיון\" | משפחת כץ-ינאי ומשפחת כהן",
-  "source_url": "https://710360.kan.org.il/nir-oz/katz-cohen",
-  "group": "אפליקציית המסרים של הקיבוץ",
-  "type": "text",
-  "note": "Time as printed by Kan (00:44 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "רותם",
-  "sender_fate": "",
-  "time": "00:45",
-  "text": "הם חונקים אותנו. בבקשה תעזרו לנו",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: \"זה כאילו היה ביקום מקביל, מעבר לכל הגיון\" | משפחת כץ-ינאי ומשפחת כהן",
-  "source_url": "https://710360.kan.org.il/nir-oz/katz-cohen",
-  "group": "אפליקציית המסרים של הקיבוץ",
-  "type": "text",
-  "note": "Time as printed by Kan (00:45 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר יצחק",
-  "sender": "יפה",
-  "sender_fate": "",
-  "time": "00:48",
-  "text": "בבקשה תעדכן מידי פעם מה איתך??,",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: הבן שרד את הנובה, האבא נפל בקרב ונחטף | משפחת רודאיף",
-  "source_url": "https://710360.kan.org.il/nir-yitzhak/rudaeff",
-  "group": "יפה מנסה להשיג את ליאור",
-  "type": "text",
-  "note": "Time as printed by Kan (00:48 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "כרם שלום",
-  "sender": "צוות צח\"י",
-  "sender_fate": "",
-  "time": "02:30",
-  "text": "הודעת ביטחון כרם שלום שעה 2:30 ישנה אפשרות לפינוי התושבים שנותרו בישוב בעזרת אוטובוסים ממוגנים. האוטובוס יקח את התושבים למלון באזור ים המלח. רכבים פרטיים יכולים להתלוות מאחורי האוטובוס. פרטים נוספים מדוייקים יותר בהמשך. ההמלצה הגורפת של צח״י היא להתפנות",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: זוג החובשים שטיפל בפצועים תחת אש | משפחת קיסין",
-  "source_url": "https://710360.kan.org.il/kerem-shalom/kissin",
-  "group": "הודעות צוות צח״י לגבי הפינוי",
-  "type": "text",
-  "note": "Time as printed by Kan (02:30 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "כרם שלום",
-  "sender": "צוות צח\"י",
-  "sender_fate": "",
-  "time": "02:45",
-  "text": "הפינוי יתבצע הלילה. יש להיות מוכנים ברבע לחמש. פרטים נוספים ימסרו בהמשך",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: זוג החובשים שטיפל בפצועים תחת אש | משפחת קיסין",
-  "source_url": "https://710360.kan.org.il/kerem-shalom/kissin",
-  "group": "הודעות צוות צח״י לגבי הפינוי",
-  "type": "text",
-  "note": "Time as printed by Kan (02:45 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "אבא",
-  "sender_fate": "",
-  "time": "04:13",
-  "text": "בוקר נעים\nבוקר טוב\nחיבוקים הרבה.",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: נרצחו בזמן הליכת הבוקר | ג׳ודי ויינשטיין וגדי חגי",
-  "source_url": "https://710360.kan.org.il/nir-oz/vinstein",
-  "group": "הקבוצה המשפחתית",
-  "type": "text",
-  "note": "Time as printed by Kan (04:13 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "ניר עוז",
-  "sender": "אמא",
-  "sender_fate": "",
-  "time": "04:26",
-  "text": "hi y'all",
-  "lang": "en",
-  "source_title": "כאן 7.10.360: נרצחו בזמן הליכת הבוקר | ג׳ודי ויינשטיין וגדי חגי",
-  "source_url": "https://710360.kan.org.il/nir-oz/vinstein",
-  "group": "הקבוצה המשפחתית",
-  "type": "text",
-  "note": "Time as printed by Kan (04:26 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "נחל עוז",
-  "sender": "גידי",
-  "sender_fate": "",
-  "time": "05:06",
-  "text": "שרון תני תמונת מצב",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: \"אלינו לבית לא ייכנסו מחבלים\" | משפחת פוסלושני",
-  "source_url": "https://710360.kan.org.il/nahal-oz/poslushni",
-  "group": "שרונה מתכתבת עם אחיינה, גידי",
-  "type": "text",
-  "note": "Time as printed by Kan (05:06 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "כפר עזה",
-  "sender": "צפריר",
-  "sender_fate": "",
-  "time": "05:08",
-  "text": "שלא ישכחו אותנו",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: המשפחה נסעה לחגוג את החג בקיבוץ; מאיה נרצחה | משפחת בן דוד",
-  "source_url": "https://710360.kan.org.il/kfar-aza/bendavid",
-  "group": "התכתבות בין צפריר ורויטל בשעה 5:08 בראשון לפנות בוקר (השעות אינן מדויקות)",
-  "type": "text",
-  "note": "Time as printed by Kan (05:08 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "כפר עזה",
-  "sender": "רויטל",
-  "sender_fate": "",
-  "time": "05:08",
-  "text": "אני כל הזמן מזכירה ושולחת לכוחות בשטח",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: המשפחה נסעה לחגוג את החג בקיבוץ; מאיה נרצחה | משפחת בן דוד",
-  "source_url": "https://710360.kan.org.il/kfar-aza/bendavid",
-  "group": "התכתבות בין צפריר ורויטל בשעה 5:08 בראשון לפנות בוקר (השעות אינן מדויקות)",
-  "type": "text",
-  "note": "Time as printed by Kan (05:08 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
-  "community": "כפר עזה",
-  "sender": "רויטל",
-  "sender_fate": "",
-  "time": "05:09",
-  "text": "מה עם מאיה?",
-  "lang": "he",
-  "source_title": "כאן 7.10.360: המשפחה נסעה לחגוג את החג בקיבוץ; מאיה נרצחה | משפחת בן דוד",
-  "source_url": "https://710360.kan.org.il/kfar-aza/bendavid",
-  "group": "התכתבות בין צפריר ורויטל בשעה 5:08 בראשון לפנות בוקר (השעות אינן מדויקות)",
-  "type": "text",
-  "note": "Time as printed by Kan (05:09 07/10/2023). Hours 00-05 on this site often look like a 12-hour clock (e.g. 00:44 matches a 12:44 message in the Nir Oz group); treat as uncertain."
- },
- {
   "community": "שדרות",
   "sender": "תושב/ת",
   "sender_fate": "",
@@ -1985,6 +1751,18 @@
   "sender_fate": "",
   "time": "06:40",
   "text": "לדעתי בגלל חג המשק. לא הזמינו את השכנים.",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: שושי צעקה \"יונצ'י\" לעבר בעלה - ונפלה | יונצ'י ושושי ברוש",
+  "source_url": "https://710360.kan.org.il/nahal-oz/brosh",
+  "group": "יונצ'י ושושי מתעדכנים בקבוצה עם ילדיהם",
+  "type": "text"
+ },
+ {
+  "community": "נחל עוז",
+  "sender": "רועי",
+  "sender_fate": "",
+  "time": "06:40",
+  "text": "את מי הרגו להם?",
   "lang": "he",
   "source_title": "כאן 7.10.360: שושי צעקה \"יונצ'י\" לעבר בעלה - ונפלה | יונצ'י ושושי ברוש",
   "source_url": "https://710360.kan.org.il/nahal-oz/brosh",
@@ -4712,6 +4490,18 @@
   "sender_fate": "",
   "time": "07:02",
   "text": "כאילו יש אנשים מחוץ לבית שלי עם אקדח",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"ראיתי את המוות, כיסיתי את קסם שלא יראו אותה\" | משפחת שרמן",
+  "source_url": "https://710360.kan.org.il/holit/sherman",
+  "group": "קבוצת הוואטסאפ של ליבנת עם האחים שלה",
+  "type": "text"
+ },
+ {
+  "community": "חולית",
+  "sender": "ליבנת",
+  "sender_fate": "",
+  "time": "07:02",
+  "text": "אני מתה",
   "lang": "he",
   "source_title": "כאן 7.10.360: \"ראיתי את המוות, כיסיתי את קסם שלא יראו אותה\" | משפחת שרמן",
   "source_url": "https://710360.kan.org.il/holit/sherman",
@@ -9132,6 +8922,18 @@
   "sender_fate": "",
   "time": "07:26",
   "text": "אבל קצת יותר שקט\nירו על הבית",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: אוהד שלח צוואה בוואטסאפ ונחטף עם אשתו | משפחת בן עמי",
+  "source_url": "https://710360.kan.org.il/beeri/ben-ami",
+  "group": "התכתבות בין רז לבתה אלה",
+  "type": "text"
+ },
+ {
+  "community": "בארי",
+  "sender": "אלה",
+  "sender_fate": "",
+  "time": "07:26",
+  "text": "אמאלה \nהפסיקו??\nבבקשה שהרגו אותם",
   "lang": "he",
   "source_title": "כאן 7.10.360: אוהד שלח צוואה בוואטסאפ ונחטף עם אשתו | משפחת בן עמי",
   "source_url": "https://710360.kan.org.il/beeri/ben-ami",
@@ -14184,6 +13986,18 @@
  },
  {
   "community": "כפר עזה",
+  "sender": "אורי",
+  "sender_fate": "",
+  "time": "08:03",
+  "text": "שלום\nאורי אפשטיין מכפר עזה\nיש כאן מחבלים בקיבוץ במקומות רבים\nיש לא מעט הרוגים ופצועים\nרבשצ וסגנו לא זמינים ולא עונים\nחלק מצוות צחי [צוות חירום וחוסן יישובי] נהרג ואחרים לא עונים (כנראה מחבלים לידם)\nתן לי אנשי קשר לדיווח על מחבלים, פצועים והרוגים",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: משפחה אחת, שלושה דורות שנרצחו | משפחת אפשטיין",
+  "source_url": "https://710360.kan.org.il/kfar-aza/epshtein",
+  "group": "התכתבות לאורך הבוקר בין אורי לבין קצין בכיר",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
   "sender": "נועם",
   "sender_fate": "",
   "time": "08:03",
@@ -14356,6 +14170,18 @@
   "type": "text"
  },
  {
+  "community": "בארי",
+  "sender": "אלה",
+  "sender_fate": "",
+  "time": "08:05",
+  "text": "הצלחת לדבר עם סבא וסבתא?\nיש מלא שמועות שאריק (רבש\"ץ בארי) נהרג",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: מתוך ארבעה בני משפחה, רק אחד שרד את הטבח | אלי ושושנה כרסנתי, מעינה ונח הרשקוביץ",
+  "source_url": "https://710360.kan.org.il/beeri/hershkovitz",
+  "group": "התכתבות בקבוצת משפחת הרשקוביץ",
+  "type": "text"
+ },
+ {
   "community": "כפר עזה",
   "sender": "נטעלי",
   "sender_fate": "",
@@ -14365,6 +14191,18 @@
   "source_title": "כאן 7.10.360: החליט לברוח ונרצח בחנייה | עומר צדיקביץ",
   "source_url": "https://710360.kan.org.il/kfar-aza/zadikevitch",
   "group": "נטעלי מנסה ליצור קשר עם אביה במהלך יום שבת",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "איילת",
+  "sender_fate": "",
+  "time": "08:05",
+  "text": "דפ בלהה נהרג מירי ישיר",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: אורי יצא להגן על הקיבוץ - ונפל בקרב לצד חברו | משפחת רוסו",
+  "source_url": "https://710360.kan.org.il/kfar-aza/rousso",
+  "group": "התכתבות בין דפנה לאחותה איילת",
   "type": "text"
  },
  {
@@ -16683,6 +16521,18 @@
   "sender": "רעות",
   "sender_fate": "",
   "time": "08:26",
+  "text": "דביר נרצח",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"אמא זו דריה, אבא נרצח. הצילו\" | משפחת קרפ",
+  "source_url": "https://710360.kan.org.il/reim/karp",
+  "group": "מתוך קבוצת הוואטסאפ של הקיבוץ",
+  "type": "text"
+ },
+ {
+  "community": "רעים",
+  "sender": "רעות",
+  "sender_fate": "",
+  "time": "08:26",
   "text": "דחיף",
   "lang": "he",
   "source_title": "כאן 7.10.360: \"אמא זו דריה, אבא נרצח. הצילו\" | משפחת קרפ",
@@ -17164,6 +17014,18 @@
   "sender_fate": "",
   "time": "08:29",
   "text": "כן",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הבעל נמלט ממסיבת הפסיידאק וחילץ את אשתו בשדות | משפחת קשי",
+  "source_url": "https://710360.kan.org.il/kerem-shalom/kashi",
+  "group": "אירנה מתכתבת עם בתה ליאל",
+  "type": "text"
+ },
+ {
+  "community": "כרם שלום",
+  "sender": "ליאל",
+  "sender_fate": "",
+  "time": "08:29",
+  "text": "גם מת מפחד",
   "lang": "he",
   "source_title": "כאן 7.10.360: הבעל נמלט ממסיבת הפסיידאק וחילץ את אשתו בשדות | משפחת קשי",
   "source_url": "https://710360.kan.org.il/kerem-shalom/kashi",
@@ -19398,6 +19260,18 @@
   "sender": "ניראל",
   "sender_fate": "",
   "time": "08:46",
+  "text": "מת לעוף מפה כברררר",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: ניראל כבר קנה לניב  טבעת, אך שניהם נרצחו | ניב רביב וניראל זיני",
+  "source_url": "https://710360.kan.org.il/kfar-aza/niv-nirel",
+  "group": "התכתבות בקבוצת האחים של משפחת זיני",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "ניראל",
+  "sender_fate": "",
+  "time": "08:46",
   "text": "הירי לא מפסיק",
   "lang": "he",
   "source_title": "כאן 7.10.360: ניראל כבר קנה לניב  טבעת, אך שניהם נרצחו | ניב רביב וניראל זיני",
@@ -19951,6 +19825,18 @@
   "source_title": "כאן 7.10.360: הבית החל לבעור, בני הזוג יצאו מהממ\"ד - ונרצחו | משפחת שוורצמן",
   "source_url": "https://710360.kan.org.il/kfar-aza/schwartzman",
   "group": "התכתבות בין הילדים בקבוצת הוואטסאפ המשפחתית",
+  "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "ליהיא",
+  "sender_fate": "",
+  "time": "08:50",
+  "text": "מראים בטלויזיה ג׳יפים של צה״ל עם חיילי חמאס שחזרו לרצועה כנראה עם חיילים/ אזרחים חטופים או גופות.\nמדווחים על זה באופן מסוייג אבל כנראה זה המצב",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: חיו יחד בזוגיות פרק ב' - ונרצחו זה לצד זו | רבקה בן חורין ויוסיניו גרוס",
+  "source_url": "https://710360.kan.org.il/nir-oz/ben-horin",
+  "group": "התכתבות בין רבקה ובתה ליהיא",
   "type": "text"
  },
  {
@@ -20708,6 +20594,30 @@
   "type": "text"
  },
  {
+  "community": "נחל עוז",
+  "sender": "עדי צ'רי",
+  "sender_fate": "",
+  "time": "08:58",
+  "text": "אני מתה",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"יכול להיות שנמות, אבל גם אחד מהם ימות\" | משפחת צ'רי",
+  "source_url": "https://710360.kan.org.il/nahal-oz/cherry",
+  "group": "התכתבות של עדי עם נציגה מצוות החירום היישובי",
+  "type": "text"
+ },
+ {
+  "community": "נחל עוז",
+  "sender": "צוות צח\"י",
+  "sender_fate": "",
+  "time": "08:58",
+  "text": "את לא מתה",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"יכול להיות שנמות, אבל גם אחד מהם ימות\" | משפחת צ'רי",
+  "source_url": "https://710360.kan.org.il/nahal-oz/cherry",
+  "group": "התכתבות של עדי עם נציגה מצוות החירום היישובי",
+  "type": "text"
+ },
+ {
   "community": "כיסופים",
   "sender": "עידן",
   "sender_fate": "",
@@ -20845,6 +20755,18 @@
   "sender_fate": "",
   "time": "08:59",
   "text": "שיר, מה איתך? שקד?",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"מנגינותיהם ילוונו לעד\" | משפחת מתיאס",
+  "source_url": "https://710360.kan.org.il/holit/matias",
+  "group": "התכתבות בוואטסאפ המשפחתי",
+  "type": "text"
+ },
+ {
+  "community": "חולית",
+  "sender": "רותם",
+  "sender_fate": "",
+  "time": "08:59",
+  "text": "הם כבר לא עונות נראלי שהם גם מתו",
   "lang": "he",
   "source_title": "כאן 7.10.360: \"מנגינותיהם ילוונו לעד\" | משפחת מתיאס",
   "source_url": "https://710360.kan.org.il/holit/matias",
@@ -22040,6 +21962,18 @@
  },
  {
   "community": "ניר עוז",
+  "sender": "ירדן",
+  "sender_fate": "",
+  "time": "09:10",
+  "text": "אני לא צוחק אני מת מפחד",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: משפחה שלמה נחטפה | משפחת ביבס",
+  "source_url": "https://710360.kan.org.il/nir-oz/bibas",
+  "group": "התכתבות בין ירדן לאחותו עפרי",
+  "type": "text"
+ },
+ {
+  "community": "ניר עוז",
   "sender": "עפרי",
   "sender_fate": "",
   "time": "09:10",
@@ -22197,6 +22131,18 @@
   "source_title": "כאן 7.10.360: הנרצחים האחרונים בכפר עזה | סינדי ויגאל פלש",
   "source_url": "https://710360.kan.org.il/kfar-aza/palash",
   "group": "קבוצת הוואטסאפ המשפחתית",
+  "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "תושבת 2",
+  "sender_fate": "",
+  "time": "09:11",
+  "text": "תהרגו אתם כבר!!!!",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הקיבוץ אליו הצבא לא הגיע | קיבוץ ניר עוז",
+  "source_url": "https://710360.kan.org.il/nir-oz/nir-oz",
+  "group": "התכתבות באפליקצייה היישובית",
   "type": "text"
  },
  {
@@ -24001,6 +23947,18 @@
   "source_title": "כאן 7.10.360: אוהד שלח צוואה בוואטסאפ ונחטף עם אשתו | משפחת בן עמי",
   "source_url": "https://710360.kan.org.il/beeri/ben-ami",
   "group": "התכתבות בין רז לבתה אלה",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "אורי",
+  "sender_fate": "",
+  "time": "09:22",
+  "text": "אופיר ליבשטיין נהרג\nראש המועצה וגיסי",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: משפחה אחת, שלושה דורות שנרצחו | משפחת אפשטיין",
+  "source_url": "https://710360.kan.org.il/kfar-aza/epshtein",
+  "group": "התכתבות לאורך הבוקר בין אורי לבין קצין בכיר",
   "type": "text"
  },
  {
@@ -25813,6 +25771,18 @@
   "type": "text"
  },
  {
+  "community": "חולית",
+  "sender": "מאי",
+  "sender_fate": "",
+  "time": "09:41",
+  "text": "איה הבית מפורק",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"אני אחזיר אותה לחיים\" | משפחת קקון",
+  "source_url": "https://710360.kan.org.il/holit/kakon",
+  "group": "התכתבות בין מאי לחברתה איה",
+  "type": "text"
+ },
+ {
   "community": "רעים",
   "sender": "שיר",
   "sender_fate": "",
@@ -26666,6 +26636,18 @@
  },
  {
   "community": "כרם שלום",
+  "sender": "אירנה",
+  "sender_fate": "",
+  "time": "09:48",
+  "text": "גם אני מתה לפיפי כבר בורח לי",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הבעל נמלט ממסיבת הפסיידאק וחילץ את אשתו בשדות | משפחת קשי",
+  "source_url": "https://710360.kan.org.il/kerem-shalom/kashi",
+  "group": "אירנה מתכתבת עם בתה ליאל",
+  "type": "text"
+ },
+ {
+  "community": "כרם שלום",
   "sender": "ליאל",
   "sender_fate": "",
   "time": "09:48",
@@ -27240,6 +27222,18 @@
   "sender": "דורין",
   "sender_fate": "",
   "time": "09:51",
+  "text": "בטח הרגו את הכלבים",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"אבא לא עוזב את הידית של הדלת\" | משפחת ראי",
+  "source_url": "https://710360.kan.org.il/nir-oz/rai",
+  "group": "קבוצת הוואטסאפ של משפחת ראי",
+  "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "דורין",
+  "sender_fate": "",
+  "time": "09:51",
   "text": "הם הופכים את הבית",
   "lang": "he",
   "source_title": "כאן 7.10.360: \"אבא לא עוזב את הידית של הדלת\" | משפחת ראי",
@@ -27473,6 +27467,18 @@
   "sender_fate": "",
   "time": "09:53",
   "text": "(מתייחס ליש הרוגים)\nמי אמר?",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: ״אם את לא רצה, אנחנו מתים״ | נטע פורטל וסנטיאגו פרס",
+  "source_url": "https://710360.kan.org.il/kfar-aza/portal-perez",
+  "group": "התכתבות בין נטע לאמה",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "נטע",
+  "sender_fate": "",
+  "time": "09:53",
+  "text": "ראש המועצה נהרג",
   "lang": "he",
   "source_title": "כאן 7.10.360: ״אם את לא רצה, אנחנו מתים״ | נטע פורטל וסנטיאגו פרס",
   "source_url": "https://710360.kan.org.il/kfar-aza/portal-perez",
@@ -30493,6 +30499,30 @@
   "type": "text"
  },
  {
+  "community": "ניר עוז",
+  "sender": "רבקה",
+  "sender_fate": "",
+  "time": "10:10",
+  "text": "הקהרגו את יובייבוץ לדעתי משהו",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: חיו יחד בזוגיות פרק ב' - ונרצחו זה לצד זו | רבקה בן חורין ויוסיניו גרוס",
+  "source_url": "https://710360.kan.org.il/nir-oz/ben-horin",
+  "group": "התכתבות בין רבקה ובין ביתה ליהיא",
+  "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "רבקה בן חורין",
+  "sender_fate": "",
+  "time": "10:10",
+  "text": "הרגו את יוסי",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: חיו יחד בזוגיות פרק ב' - ונרצחו זה לצד זו | רבקה בן חורין ויוסיניו גרוס",
+  "source_url": "https://710360.kan.org.il/nir-oz/ben-horin",
+  "group": "רבקה כותבת בקבוצת הוואטסאפ הקהילתית",
+  "type": "text"
+ },
+ {
   "community": "נחל עוז",
   "sender": "תושב ב'",
   "sender_fate": "",
@@ -30730,6 +30760,18 @@
   "source_title": "כאן 7.10.360: משפחה שלמה נחטפה | משפחת ביבס",
   "source_url": "https://710360.kan.org.il/nir-oz/bibas",
   "group": "התכתבות בין עפרי לאביה אלי",
+  "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "רבקה",
+  "sender_fate": "",
+  "time": "10:11",
+  "text": "הרגו את יוס",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: חיו יחד בזוגיות פרק ב' - ונרצחו זה לצד זו | רבקה בן חורין ויוסיניו גרוס",
+  "source_url": "https://710360.kan.org.il/nir-oz/ben-horin",
+  "group": "התכתבות בין רבקה ובין ביתה ליהיא",
   "type": "text"
  },
  {
@@ -34286,6 +34328,18 @@
   "sender": "בת הדודה של שירה",
   "sender_fate": "",
   "time": "10:36",
+  "text": "אין שליטה.\n2,200 שיגורים עד כה. \nיש לא מעט הרוגים.\nנהרג ראש המועצה האזורית שער הנגב",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: ידידיה יצא להילחם ונהרג | משפחת רזיאל",
+  "source_url": "https://710360.kan.org.il/kerem-shalom/raziel",
+  "group": "התכתבות בין שירה לבת דודתה",
+  "type": "text"
+ },
+ {
+  "community": "כרם שלום",
+  "sender": "בת הדודה של שירה",
+  "sender_fate": "",
+  "time": "10:36",
   "text": "אומרים שיש אצלכם ירי. מה מצבכם?",
   "lang": "he",
   "source_title": "כאן 7.10.360: ידידיה יצא להילחם ונהרג | משפחת רזיאל",
@@ -34479,6 +34533,18 @@
   "sender_fate": "",
   "time": "10:38",
   "text": "ממשיכים לירות בכל הקיבוץ. נכנסו לבתים אצל אתי קורן ואייל עטר",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: קפץ על הרימון והציל את בת זוגו | נטע אפשטיין ואירן שביט",
+  "source_url": "https://710360.kan.org.il/kfar-aza/neta-iren",
+  "group": "התכתבות בין נטע אפשטיין לאמו איילת אפשטיין (מהטלפון של אירן כי הטלפון של נטע נגמר הבטריה)",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "נטע",
+  "sender_fate": "",
+  "time": "10:38",
+  "text": "זה פשוט טבח",
   "lang": "he",
   "source_title": "כאן 7.10.360: קפץ על הרימון והציל את בת זוגו | נטע אפשטיין ואירן שביט",
   "source_url": "https://710360.kan.org.il/kfar-aza/neta-iren",
@@ -35812,6 +35878,18 @@
   "sender": "חזי",
   "sender_fate": "",
   "time": "10:49",
+  "text": "השאלה היא האם ישחטו אותי בשעות הקרובות או לא",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: חולה הסרטן שיצא להילחם במחבלים | חזי (יחזקאל) שאחאני",
+  "source_url": "https://710360.kan.org.il/nahal-oz/shachani",
+  "group": "התכתבות בין חזי ואמו",
+  "type": "text"
+ },
+ {
+  "community": "נחל עוז",
+  "sender": "חזי",
+  "sender_fate": "",
+  "time": "10:49",
   "text": "אתם לא מבינים את המצב פה",
   "lang": "he",
   "source_title": "כאן 7.10.360: חולה הסרטן שיצא להילחם במחבלים | חזי (יחזקאל) שאחאני",
@@ -36010,6 +36088,18 @@
   "source_title": "כאן 7.10.360: בן ה-13 שהתייתם ממשפחתו | משפחת זוהר",
   "source_url": "https://710360.kan.org.il/nahal-oz/zohar",
   "group": "עמי שומן, מנהלו של יניב ב\"ישראל היום\", מנסה לקבל ממנו אות חיים - ללא מענה",
+  "type": "text"
+ },
+ {
+  "community": "נחל עוז",
+  "sender": "אמא של חזי",
+  "sender_fate": "",
+  "time": "10:51",
+  "text": "אני מתה עד כדי כך",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: חולה הסרטן שיצא להילחם במחבלים | חזי (יחזקאל) שאחאני",
+  "source_url": "https://710360.kan.org.il/nahal-oz/shachani",
+  "group": "התכתבות בין חזי ואמו",
   "type": "text"
  },
  {
@@ -37205,6 +37295,18 @@
   "source_title": "כאן 7.10.360: בן ה-13 שהתייתם ממשפחתו | משפחת זוהר",
   "source_url": "https://710360.kan.org.il/nahal-oz/zohar",
   "group": "עמי שומן, מנהלו של יניב ב\"ישראל היום\", מנסה לקבל ממנו אות חיים - ללא מענה",
+  "type": "text"
+ },
+ {
+  "community": "נחל עוז",
+  "sender": "רוני",
+  "sender_fate": "",
+  "time": "11:05",
+  "text": "הרגו אותם?",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: מפקד כיתת הכוננות נלחם שעות, אשתו שמרה בממ\"ד על 6 ילדים | משפחת מאירוביץ'",
+  "source_url": "https://710360.kan.org.il/nahal-oz/meirovitch",
+  "group": "התכתבות בין ברי לרוני אשתו",
   "type": "text"
  },
  {
@@ -39857,6 +39959,18 @@
   "sender": "אירן",
   "sender_fate": "",
   "time": "11:36",
+  "text": "הוא מת",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: קפץ על הרימון והציל את בת זוגו | נטע אפשטיין ואירן שביט",
+  "source_url": "https://710360.kan.org.il/kfar-aza/neta-iren",
+  "group": "לאחר שנטע נרצח, אירן ממשיכה את השיחה עם אביו",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "אירן",
+  "sender_fate": "",
+  "time": "11:36",
   "text": "ומתחילה שריפה",
   "lang": "he",
   "source_title": "כאן 7.10.360: קפץ על הרימון והציל את בת זוגו | נטע אפשטיין ואירן שביט",
@@ -40018,6 +40132,18 @@
   "source_title": "כאן 7.10.360: קפץ על הרימון והציל את בת זוגו | נטע אפשטיין ואירן שביט",
   "source_url": "https://710360.kan.org.il/kfar-aza/neta-iren",
   "group": "לאחר שנטע נרצח, אירן ממשיכה את השיחה עם אביו",
+  "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "אירן",
+  "sender_fate": "",
+  "time": "11:38",
+  "text": "הוא מת",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: קפץ על הרימון והציל את בת זוגו | נטע אפשטיין ואירן שביט",
+  "source_url": "https://710360.kan.org.il/kfar-aza/neta-iren",
+  "group": "התכתבות בין אירן להוריה",
   "type": "text"
  },
  {
@@ -42052,6 +42178,19 @@
   "type": "text"
  },
  {
+  "community": "בארי",
+  "sender": "אלה",
+  "sender_fate": "",
+  "time": "12:07",
+  "text": "אתם שומעים צעקות בערבית?",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: אוהד שלח צוואה בוואטסאפ ונחטף עם אשתו | משפחת בן עמי",
+  "source_url": "https://710360.kan.org.il/beeri/ben-ami",
+  "group": "התכתבות בין אוהד לבתו אלה",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:07 (שעון 12 שעות); הוצגה כ־12:07"
+ },
+ {
   "community": "כפר עזה",
   "sender": "ליזי",
   "sender_fate": "",
@@ -42325,6 +42464,18 @@
   "sender_fate": "",
   "time": "12:12",
   "text": "מורחת את עצמך בדם",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: תשעת הצעירים שמצאו את עצמם בתוך הכאוס | קומונת השינשינים",
+  "source_url": "https://710360.kan.org.il/ein-hashlosha/shinshinim",
+  "group": "התכתבות בין נויה לנועם משולם, חברה של אחותה",
+  "type": "text"
+ },
+ {
+  "community": "עין השלושה",
+  "sender": "נועם",
+  "sender_fate": "",
+  "time": "12:12",
+  "text": "ומשחקת אותך מתה",
   "lang": "he",
   "source_title": "כאן 7.10.360: תשעת הצעירים שמצאו את עצמם בתוך הכאוס | קומונת השינשינים",
   "source_url": "https://710360.kan.org.il/ein-hashlosha/shinshinim",
@@ -42737,6 +42888,18 @@
   "sender_fate": "",
   "time": "12:17",
   "text": "סיירת מטכ״ל נמצאת עכשיו פה הבית של חברת קיבוץ עלה באש היא פצועה",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
+  "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
+  "group": "דניאלה מתכתבת עם מעין",
+  "type": "text"
+ },
+ {
+  "community": "בארי",
+  "sender": "דניאלה",
+  "sender_fate": "",
+  "time": "12:17",
+  "text": "ויויאן לא עונה... לבסיס ברעים נכנסו שחטו חיילים וחטפו",
   "lang": "he",
   "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
   "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
@@ -43200,6 +43363,19 @@
   "source_url": "https://710360.kan.org.il/holit/gilor",
   "group": "שיחה בין ענת ובתה נופר",
   "type": "text"
+ },
+ {
+  "community": "בארי",
+  "sender": "איתי",
+  "sender_fate": "",
+  "time": "12:23",
+  "text": "שרפו לנו את הבית, ברחנו מהחלון. \nמתחבאים בחוץ",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: המשפחה שהסתתרה מאחורי עצים וענפים | משפחת שאבי",
+  "source_url": "https://710360.kan.org.il/beeri/shabi",
+  "group": "מתוך התכתבות בקבוצת הוואטסאפ המשפחתית",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:23 (שעון 12 שעות); הוצגה כ־12:23"
  },
  {
   "community": "כיסופים",
@@ -43942,6 +44118,32 @@
   "type": "text"
  },
  {
+  "community": "ניר עוז",
+  "sender": "עדן",
+  "sender_fate": "",
+  "time": "12:34",
+  "text": "סבתא שואלת מה קרה בניר עוז",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
+  "source_url": "https://710360.kan.org.il/nir-oz/maor",
+  "group": "התכתבות בין לי ובתה, עדן",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:34 (שעון 12 שעות); הוצגה כ־12:34"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "לי",
+  "sender_fate": "",
+  "time": "12:34",
+  "text": "עדיין קורה. חדירת מחבלים",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
+  "source_url": "https://710360.kan.org.il/nir-oz/maor",
+  "group": "התכתבות בין לי ובתה, עדן",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:34 (שעון 12 שעות); הוצגה כ־12:34"
+ },
+ {
   "community": "נחל עוז",
   "sender": "יניב",
   "sender_fate": "",
@@ -44000,6 +44202,45 @@
   "source_url": "https://710360.kan.org.il/beeri/segev",
   "group": "שרון שגב מבקשת חילוץ בקבוצת הוואטסאפ השכונתית",
   "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "עדן",
+  "sender_fate": "",
+  "time": "12:35",
+  "text": "איפה הצבא",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
+  "source_url": "https://710360.kan.org.il/nir-oz/maor",
+  "group": "התכתבות בין לי ובתה, עדן",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:35 (שעון 12 שעות); הוצגה כ־12:35"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "לי",
+  "sender_fate": "",
+  "time": "12:35",
+  "text": "לא יודעת",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
+  "source_url": "https://710360.kan.org.il/nir-oz/maor",
+  "group": "התכתבות בין לי ובתה, עדן",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:35 (שעון 12 שעות); הוצגה כ־12:35"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "עדן",
+  "sender_fate": "",
+  "time": "12:35",
+  "text": "תבדקיייי\nפליזזזז",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: תושב הקיבוץ שנלחם לבדו במחבלים | ירון ולי מאור",
+  "source_url": "https://710360.kan.org.il/nir-oz/maor",
+  "group": "התכתבות בין לי ובתה, עדן",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:35 (שעון 12 שעות); הוצגה כ־12:35"
  },
  {
   "community": "חולית",
@@ -44558,6 +44799,19 @@
   "type": "text"
  },
  {
+  "community": "ניר עוז",
+  "sender": "רותם",
+  "sender_fate": "",
+  "time": "12:44",
+  "text": "הם שורפים אצלנו. יקיר נפצע. בבקשה שמישהו יגיע",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"זה כאילו היה ביקום מקביל, מעבר לכל הגיון\" | משפחת כץ-ינאי ומשפחת כהן",
+  "source_url": "https://710360.kan.org.il/nir-oz/katz-cohen",
+  "group": "אפליקציית המסרים של הקיבוץ",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:44 (שעון 12 שעות); הוצגה כ־12:44"
+ },
+ {
   "community": "כיסופים",
   "sender": "דני",
   "sender_fate": "",
@@ -44750,6 +45004,19 @@
   "type": "text"
  },
  {
+  "community": "ניר יצחק",
+  "sender": "יפה",
+  "sender_fate": "",
+  "time": "12:48",
+  "text": "בבקשה תעדכן מידי פעם מה איתך??,",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הבן שרד את הנובה, האבא נפל בקרב ונחטף | משפחת רודאיף",
+  "source_url": "https://710360.kan.org.il/nir-yitzhak/rudaeff",
+  "group": "יפה מנסה להשיג את ליאור",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־00:48 (שעון 12 שעות); הוצגה כ־12:48"
+ },
+ {
   "community": "נירים",
   "sender": "הדס",
   "sender_fate": "",
@@ -44881,6 +45148,18 @@
   "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
   "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
   "group": "דניאלה מתכתבת עם מעין",
+  "type": "text"
+ },
+ {
+  "community": "בארי",
+  "sender": "אורנה",
+  "sender_fate": "",
+  "time": "12:52",
+  "text": "ממש הבעיה שהפעם הרבה אזרחים נהרגו",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
+  "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
+  "group": "דניאלה מתכתבת עם חברתה אורנה צור",
   "type": "text"
  },
  {
@@ -49310,6 +49589,19 @@
   "type": "text"
  },
  {
+  "community": "כרם שלום",
+  "sender": "צוות צח\"י",
+  "sender_fate": "",
+  "time": "14:30",
+  "text": "הודעת ביטחון כרם שלום שעה 2:30 ישנה אפשרות לפינוי התושבים שנותרו בישוב בעזרת אוטובוסים ממוגנים. האוטובוס יקח את התושבים למלון באזור ים המלח. רכבים פרטיים יכולים להתלוות מאחורי האוטובוס. פרטים נוספים מדוייקים יותר בהמשך. ההמלצה הגורפת של צח״י היא להתפנות",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: זוג החובשים שטיפל בפצועים תחת אש | משפחת קיסין",
+  "source_url": "https://710360.kan.org.il/kerem-shalom/kissin",
+  "group": "הודעות צוות צח״י לגבי הפינוי",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־02:30 (שעון 12 שעות); הוצגה כ־14:30"
+ },
+ {
   "community": "שדרות",
   "sender": "תושב/ת",
   "sender_fate": "",
@@ -49574,6 +49866,19 @@
   "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
   "group": "דניאלה מתכתבת עם מעין",
   "type": "text"
+ },
+ {
+  "community": "כרם שלום",
+  "sender": "צוות צח\"י",
+  "sender_fate": "",
+  "time": "14:45",
+  "text": "הפינוי יתבצע הלילה. יש להיות מוכנים ברבע לחמש. פרטים נוספים ימסרו בהמשך",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: זוג החובשים שטיפל בפצועים תחת אש | משפחת קיסין",
+  "source_url": "https://710360.kan.org.il/kerem-shalom/kissin",
+  "group": "הודעות צוות צח״י לגבי הפינוי",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־02:45 (שעון 12 שעות); הוצגה כ־14:45"
  },
  {
   "community": "בארי",
@@ -50977,6 +51282,18 @@
   "type": "text"
  },
  {
+  "community": "נחל עוז",
+  "sender": "איתי",
+  "sender_fate": "",
+  "time": "15:50",
+  "text": "אחי בבקשה תכתוב לי אני בוכה מת מפחד שקרה לך משהו",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: בן ה-13 שהתייתם ממשפחתו | משפחת זוהר",
+  "source_url": "https://710360.kan.org.il/nahal-oz/zohar",
+  "group": "התכתבות של יניב עם חברו הטוב ועמיתו, איתי לוי",
+  "type": "text"
+ },
+ {
   "community": "ניר עוז",
   "sender": "Menashe",
   "sender_fate": "",
@@ -51222,6 +51539,19 @@
   "media_page": "https://www.youtube.com/watch?v=Sle9jnZaqa4",
   "media_timestamp": "1:40",
   "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "אבא",
+  "sender_fate": "",
+  "time": "16:13",
+  "text": "בוקר נעים\nבוקר טוב\nחיבוקים הרבה.",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: נרצחו בזמן הליכת הבוקר | ג׳ודי ויינשטיין וגדי חגי",
+  "source_url": "https://710360.kan.org.il/nir-oz/vinstein",
+  "group": "הקבוצה המשפחתית",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־04:13 (שעון 12 שעות); הוצגה כ־16:13"
  },
  {
   "community": "נחל עוז",
@@ -51714,6 +52044,19 @@
   "source_url": "https://710360.kan.org.il/holit/kleiman",
   "group": "התכתבות של ליאור עם חברו אסף",
   "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "אמא",
+  "sender_fate": "",
+  "time": "16:26",
+  "text": "hi y'all",
+  "lang": "en",
+  "source_title": "כאן 7.10.360: נרצחו בזמן הליכת הבוקר | ג׳ודי ויינשטיין וגדי חגי",
+  "source_url": "https://710360.kan.org.il/nir-oz/vinstein",
+  "group": "הקבוצה המשפחתית",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־04:26 (שעון 12 שעות); הוצגה כ־16:26"
  },
  {
   "community": "ניר עוז",
@@ -52684,6 +53027,19 @@
   "type": "text"
  },
  {
+  "community": "נחל עוז",
+  "sender": "גידי",
+  "sender_fate": "",
+  "time": "17:06",
+  "text": "שרון תני תמונת מצב",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"אלינו לבית לא ייכנסו מחבלים\" | משפחת פוסלושני",
+  "source_url": "https://710360.kan.org.il/nahal-oz/poslushni",
+  "group": "שרונה מתכתבת עם אחיינה, גידי",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־05:06 (שעון 12 שעות); הוצגה כ־17:06"
+ },
+ {
   "community": "ניר עוז",
   "sender": "ירדנה",
   "sender_fate": "",
@@ -52720,6 +53076,32 @@
   "type": "text"
  },
  {
+  "community": "כפר עזה",
+  "sender": "צפריר",
+  "sender_fate": "",
+  "time": "17:08",
+  "text": "שלא ישכחו אותנו",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: המשפחה נסעה לחגוג את החג בקיבוץ; מאיה נרצחה | משפחת בן דוד",
+  "source_url": "https://710360.kan.org.il/kfar-aza/bendavid",
+  "group": "התכתבות בין צפריר ורויטל בשעה 5:08 בראשון לפנות בוקר (השעות אינן מדויקות)",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־05:08 (שעון 12 שעות); הוצגה כ־17:08"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "רויטל",
+  "sender_fate": "",
+  "time": "17:08",
+  "text": "אני כל הזמן מזכירה ושולחת לכוחות בשטח",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: המשפחה נסעה לחגוג את החג בקיבוץ; מאיה נרצחה | משפחת בן דוד",
+  "source_url": "https://710360.kan.org.il/kfar-aza/bendavid",
+  "group": "התכתבות בין צפריר ורויטל בשעה 5:08 בראשון לפנות בוקר (השעות אינן מדויקות)",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־05:08 (שעון 12 שעות); הוצגה כ־17:08"
+ },
+ {
   "community": "נחל עוז",
   "sender": "גידי",
   "sender_fate": "",
@@ -52744,6 +53126,18 @@
   "type": "text"
  },
  {
+  "community": "נחל עוז",
+  "sender": "שרונה",
+  "sender_fate": "",
+  "time": "17:08",
+  "text": "גדעון הוא מת",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: \"אלינו לבית לא ייכנסו מחבלים\" | משפחת פוסלושני",
+  "source_url": "https://710360.kan.org.il/nahal-oz/poslushni",
+  "group": "שרונה מתכתבת עם אחיינה, גידי",
+  "type": "text"
+ },
+ {
   "community": "ניר עוז",
   "sender": "חנה",
   "sender_fate": "",
@@ -52754,6 +53148,19 @@
   "source_url": "https://z.ynet.co.il/long/content/specials/nir-oz-groupchat/",
   "group": "הפרלמנט של ניר עוז",
   "type": "text"
+ },
+ {
+  "community": "כפר עזה",
+  "sender": "רויטל",
+  "sender_fate": "",
+  "time": "17:09",
+  "text": "מה עם מאיה?",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: המשפחה נסעה לחגוג את החג בקיבוץ; מאיה נרצחה | משפחת בן דוד",
+  "source_url": "https://710360.kan.org.il/kfar-aza/bendavid",
+  "group": "התכתבות בין צפריר ורויטל בשעה 5:08 בראשון לפנות בוקר (השעות אינן מדויקות)",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־05:09 (שעון 12 שעות); הוצגה כ־17:09"
  },
  {
   "community": "נחל עוז",
@@ -52778,6 +53185,31 @@
   "source_url": "https://z.ynet.co.il/long/content/specials/nir-oz-groupchat/",
   "group": "הפרלמנט של ניר עוז",
   "type": "text"
+ },
+ {
+  "community": "בארי",
+  "sender": "דניאלה",
+  "sender_fate": "",
+  "time": "17:15",
+  "text": "עכשיו קיבלתי הודעה אבא של תלמיד כיתתי נהרג בירי מחבלים במגן",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
+  "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
+  "group": "דניאלה מתכתבת עם מעין",
+  "type": "text"
+ },
+ {
+  "community": "נחל עוז",
+  "sender": "אמא של חזי",
+  "sender_fate": "",
+  "time": "17:15",
+  "text": "חזי אתה לא מגיב לי אני מתה",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: חולה הסרטן שיצא להילחם במחבלים | חזי (יחזקאל) שאחאני",
+  "source_url": "https://710360.kan.org.il/nahal-oz/shachani",
+  "group": "התכתבות של חזי עם משפחתו",
+  "type": "text",
+  "note": "השעה באתר כאן מופיעה כ־05:15 (שעון 12 שעות); הוצגה כ־17:15"
  },
  {
   "community": "ניר עוז",
@@ -53967,6 +54399,18 @@
   "community": "ניר עוז",
   "sender": "הדס",
   "sender_fate": "",
+  "time": "19:13",
+  "text": "שואה\nזוועה\nיום כיפור 2\nהילדים שלי, עפר ואמא לא עונים\nאו שנחטפו או שנרצחו. \nשרפו את כל הבתים\nבזזו\nרצחו\nשואאהההההה",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הסבתא והנכדה שנרצחו מחובקות | כרמלה ונויה דן",
+  "source_url": "https://710360.kan.org.il/nir-oz/carmelanoyadan",
+  "group": "התכתבות בקבוצת הוואטסאפ של משפחת דן",
+  "type": "text"
+ },
+ {
+  "community": "ניר עוז",
+  "sender": "הדס",
+  "sender_fate": "",
   "time": "19:14",
   "text": "להתפלללללל\nפשוט זוועת עולם",
   "lang": "he",
@@ -54658,6 +55102,18 @@
   "sender": "דניאלה",
   "sender_fate": "",
   "time": "21:50",
+  "text": "כן… הם כנראה גם או בין הנרצחים או החטופים. יש חטופים רבים",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
+  "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
+  "group": "דניאלה מתכבת עם חברתה, אורנה צור",
+  "type": "text"
+ },
+ {
+  "community": "בארי",
+  "sender": "דניאלה",
+  "sender_fate": "",
+  "time": "21:50",
   "text": "ביניהם גם ויויאן המחותנת שלנו",
   "lang": "he",
   "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
@@ -55081,6 +55537,18 @@
   "sender_fate": "",
   "time": "22:47",
   "text": "נכון, הם נחטפו",
+  "lang": "he",
+  "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
+  "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
+  "group": "דניאלה מתכבת עם חברתה, אורנה צור",
+  "type": "text"
+ },
+ {
+  "community": "בארי",
+  "sender": "דניאלה",
+  "sender_fate": "",
+  "time": "22:47",
+  "text": "או נרצחו",
   "lang": "he",
   "source_title": "כאן 7.10.360: הראשונים שצילמו את חדירת המחבלים לבארי | דניאלה ומוטי ברק בר-צור",
   "source_url": "https://710360.kan.org.il/beeri/barak-ben-tzur",
