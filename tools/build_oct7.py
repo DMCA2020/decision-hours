@@ -241,6 +241,26 @@ if os.path.exists(NM_PATH) and os.path.exists(NMP_PATH):
         members_used.add(mid)
         placed.append((key, st))
 
+# ---- messages from residents besieged in their homes (data/besieged_selected.json, chosen from besieged.json) ----
+BS_PATH = os.path.join(HERE, 'data', 'besieged_selected.json')
+if os.path.exists(BS_PATH):
+    for j, x in enumerate(json.load(open(BS_PATH, encoding='utf-8'))):
+        hh, mm = x['time'].split(':')
+        name = f"{clean(x.get('sender') or 'תושב/ת')}, {clean(x['community'])}"
+        mid = 'res_' + re.sub(r'\W+', '_', name).strip('_')
+        if mid not in nova_members:
+            nova_members[mid] = {'name': name, 'color': '#6b7f5e', 'g': 'f' if re.search(r'ת$|ה$', x.get('sender') or '') else 'm'}
+        members_used.add(mid)
+        kind = 'הודעה מקבוצת הוואטסאפ של היישוב, כפי שפורסמה' if 'קבוצ' in (x.get('group') or '') or 'group' in (x.get('group') or '').lower() else 'הודעה שנשלחה באותו יום, כפי שפורסמה'
+        placed.append(((1, int(hh) * 60 + int(mm), 2), {
+            'from': mid, 'id': f'B{j + 1:03d}', 'time': x['time'], 'kind': kind,
+            'text': clean(x['text']), **({'memorial': clean(x['sender_fate'])} if x.get('sender_fate') else {}),
+            'note': clean(x.get('group') or ''),
+            'sources': [{'label': clean(x.get('source_title') or 'מקור'), 'url': x.get('source_url') or x.get('media_page') or ''}],
+            'info': {'time': x['time'], 'people': name + (f" · {clean(x['group'])}" if x.get('group') else ''), 'event': clean(x['text']), 'decision': '',
+                     'doc': kind + (f". {clean(x['note'])}" if x.get('note') else ''), 'caveat': ''},
+        }))
+
 # ---- recorded speech from the transcripts file (data/recordings.json) ----
 REC_PATH = os.path.join(HERE, 'data', 'recordings.json')
 AUDIO_MAP = json.load(open(os.path.join(HERE, 'data', 'audio_map.json'), encoding='utf-8')) if os.path.exists(os.path.join(HERE, 'data', 'audio_map.json')) else {}
@@ -380,6 +400,32 @@ for st in steps:
         placed = [p for p in placed if p not in mine]
 merged += [p[1] for p in placed]
 steps = merged
+
+def chrono(seq):
+    """Stable chronological order inside each day; items without a clock follow the item before them."""
+    out, day, last = [], 0, -1
+    for n, st in enumerate(seq):
+        if st.get('type') == 'date':
+            day = 0 if '6 באוקטובר' in st['text'] else 1
+            last = -1
+            key = (day, -1)
+        else:
+            m = re.fullmatch(r'(\d\d):(\d\d)', st.get('time') or '')
+            if st.get('id') == 'S02' or st.get('time') == 'לילה':
+                key = (day, PARTY_AT)
+            elif st.get('id') == 'S01' or st.get('time') == 'בוקר':
+                key = (day, UNTIMED_AT)
+            elif m:
+                key = (day, int(m.group(1)) * 60 + int(m.group(2)))
+            else:
+                key = (day, last)
+            last = key[1]
+        out.append((key, n, st))
+    out.sort(key=lambda t: (t[0], t[1]))
+    return [t[2] for t in out]
+
+
+steps = chrono(steps)
 
 members = {'me': {'name': 'את/ה', 'color': '#00a884', 'g': 'm'}}
 for mid, name, _, portrait, color, g in MEMBERS:
