@@ -408,13 +408,16 @@
   }
 
   /* ---------- typing indicator ---------- */
-  let typingRow = null;
+  let typingRow = null, typingAlso = [];
   function showTyping(from, kind) {
     const m = G.members[from];
     const verb = kind === 'voice'
       ? (m.g === 'm' ? 'מקליט הודעה קולית…' : 'מקליטה הודעה קולית…')
       : (m.g === 'm' ? 'מקליד…' : 'מקלידה…');
-    setSub(`${memberLabel(from)} ${verb}`, true);
+    if (typingAlso.length) {
+      const names = [from, ...typingAlso].map(memberLabel);
+      setSub(`${names.slice(0, -1).join(', ')} ו${names[names.length - 1]} מקלידים…`, true);
+    } else setSub(`${memberLabel(from)} ${verb}`, true);
     hideTyping(true);
     const first = from !== lastFrom;
     typingRow = document.createElement('div');
@@ -462,6 +465,7 @@
         place(chip('lock', G.lockText ? `${ICON.lock}${esc(G.lockText)}` : `${ICON.lock}ההודעות והשיחות מוצפנות מקצה לקצה. אף אחד מחוץ לצ'אט הזה, גם לא WhatsApp, לא יכול לקרוא אותן או להאזין להן.`), opts);
         return;
       case 'date': place(chip('date', esc(step.text)), opts); return;
+      case 'skip': place(chip('skip', '⏱ ' + esc(step.text)), opts); return;
       case 'system': place(chip('sys', fmt(step.text)), opts); return;
       case 'react': react(step.to, step.from, step.emoji); return;
       case 'vote': vote(step.to, step.from, step.option); return;
@@ -479,22 +483,48 @@
   async function play(token) {
     let loop = 0;
     while (token === runToken) {
+      let lastMin = null, day = 0;
       for (const scene of G.scenes) {
-        for (const step of scene) {
+        for (let si = 0; si < scene.length; si++) {
+          const step = scene[si];
           if (token !== runToken) return;
-          // G.interval: fixed rhythm, one new message every N ms (typing included)
           const isMsg = MSG_TYPES.has(step.type) && step.from;
-          const typingFor = G.interval ? Math.round(G.interval * 0.6) : null;
-          const gap = G.interval
-            ? (isMsg ? G.interval - (step.from !== 'me' ? typingFor : 0) : 0)
+          // G.interval: fixed rhythm, one new message every N ms (typing included)
+          let total = G.interval;
+          if (G.pacing === 'drama') {
+            // drama: fixed rhythm (G.interval), plus time-jump chips after long silences
+            if (step.type === 'date') { day = /6 ב/.test(step.text) ? 0 : 1; lastMin = null; }
+            const mm = /^(\d\d):(\d\d)$/.exec(step.time || '');
+            if (isMsg && mm) {
+              const now = day * 1440 + (+mm[1]) * 60 + (+mm[2]);
+              const d = lastMin == null ? 5 : Math.max(0, now - lastMin);
+              if (lastMin != null && d >= 45) {
+                applyStep({ type: 'skip', text: step.time }, step.time);
+              }
+              lastMin = now;
+            }
+          }
+          const typingFor = total ? Math.round(total * 0.6) : null;
+          const gap = total
+            ? (isMsg ? total - (step.from !== 'me' ? typingFor : 0) : 0)
             : (step.wait != null ? step.wait : 1500 + Math.random() * 2500);
           await sleep(gap);
           if (token !== runToken) return;
           if (MSG_TYPES.has(step.type) && step.from && step.from !== 'me') {
+            // several people writing at the same minute: show them typing together
+            const also = [];
+            if (G.pacing === 'drama') {
+              for (let j = si + 1; j < scene.length && also.length < 2; j++) {
+                const n = scene[j];
+                if (!(MSG_TYPES.has(n.type) && n.from) || n.time !== step.time) break;
+                if (n.from !== step.from && n.from !== 'me' && !also.includes(n.from)) also.push(n.from);
+              }
+            }
+            typingAlso = also;
             const kind = step.type === 'voice' ? 'voice' : 'text';
             let dur = kind === 'voice' ? 2600 : Math.min(G.typingMax || 5200, Math.max(1100, (step.text || '').length * 55));
             if (step.type === 'image') dur = 1800;
-            if (G.interval) dur = typingFor;
+            if (total) dur = typingFor;
             showTyping(step.from, kind);
             await sleep(dur);
             if (token !== runToken) return;

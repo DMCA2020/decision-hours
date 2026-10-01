@@ -409,12 +409,26 @@ DRAMA_PATH = os.path.join(HERE, 'data', 'drama.json')
 if os.path.exists(DRAMA_PATH):
     import copy
     drama = json.load(open(DRAMA_PATH, encoding='utf-8'))
+    DX_PATH = os.path.join(HERE, 'data', 'drama_extra.json')
+    drama_extra = json.load(open(DX_PATH, encoding='utf-8')) if os.path.exists(DX_PATH) else {}
     dg = copy.deepcopy(group)
     DLABEL = 'המחזה: נוסח בגוף ראשון על סמך המקור, לא ציטוט'
+    DRAMA_SKIP = {'R08'}  # Gallant's later account of 06:29 = T026 in the scene
+    ROLE_NAMES = {'role_brigade_cmdrs': 'מפקדי החטיבות', 'role_soroka': 'סורוקה', 'role_iaf_heli': 'מסוקי חיל האוויר'}
+
     def dramatize(seq):
         out = []
         for st in seq:
             d = drama.get(st.get('id') or '')
+            dx = drama_extra.get(st.get('id') or '')
+            if not d and dx:  # mined quote/testimony/document rewritten as in-the-moment messages
+                if dx.get('skip') or not dx.get('messages'):
+                    continue
+                rel = st.get('reply') or ''
+                d = {'messages': dx['messages']}
+                st = dict(st, _reply=(rel + 'd1') if rel in drama else rel)
+            if st.get('id') in DRAMA_SKIP:  # retells a moment already dramatized
+                continue
             if not d:
                 sid = st.get('id') or ''
                 if sid.startswith(('X', 'Q')):
@@ -442,8 +456,9 @@ if os.path.exists(DRAMA_PATH):
                     else:
                         dg['members'][who] = {'name': clean(msg.get('role_name') or who), 'color': '#78909c', 'g': 'm'}
                 to = msg.get('to')
-                to_name = dg['members'][to]['name'] if to in dg['members'] else (to or '')
+                to_name = dg['members'][to]['name'] if to in dg['members'] else ROLE_NAMES.get(to, to or '')
                 out.append({
+                    **({'reply': st['_reply']} if i == 0 and st.get('_reply') else {}),
                     'from': who, 'id': f"{st['id']}d{i + 1}", 'time': st['time'],
                     'kind': DLABEL + (f' · אל {to_name}' if to_name else ''),
                     'text': clean(msg['text']),
@@ -453,6 +468,7 @@ if os.path.exists(DRAMA_PATH):
     dg['history'] = dramatize(dg['history'])
     dg['scenes'] = [dramatize(sc) for sc in dg['scenes']]
     dg['name'] = group['name'] + ' · המחזה'
+    dg['pacing'] = 'drama'  # slow night, rapid bursts, time jumps
     dg['plain'] = True  # bubbles show only who speaks and what they say; details on tap
     dg['pinned'] = 'גרסת המחזה: הדברים נוסחו מחדש בגוף ראשון על סמך המקורות. אלה אינם ציטוטים ואינן הודעות אמיתיות.'
     dg['lockText'] = 'גרסת המחזה. כל בועה מסומנת "המחזה" נוסחה בגוף ראשון על סמך מקור פומבי ואינה ציטוט. הודעות הנובה, ההקלטות והציטוטים נשארו כפי שפורסמו.'
