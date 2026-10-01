@@ -457,37 +457,21 @@
     if (actx.state === 'suspended') actx.resume();
     return actx;
   }
-  function tone(c, t0, f0, f1, dur, vol, type) {
-    const o = c.createOscillator(), g = c.createGain();
-    o.type = type || 'sine';
-    o.frequency.setValueAtTime(f0, t0);
-    o.frequency.exponentialRampToValueAtTime(f1, t0 + dur * .8);
-    g.gain.setValueAtTime(.0001, t0);
-    g.gain.exponentialRampToValueAtTime(vol, t0 + .008);
-    g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
-    o.connect(g).connect(c.destination);
-    o.start(t0); o.stop(t0 + dur + .02);
-  }
-  function whoosh(c, t0) {
-    const n = Math.floor(c.sampleRate * .16), buf = c.createBuffer(1, n, c.sampleRate), d = buf.getChannelData(0);
-    for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n);
-    const src = c.createBufferSource(), bp = c.createBiquadFilter(), g = c.createGain();
-    src.buffer = buf; bp.type = 'bandpass'; bp.Q.value = 1.2;
-    bp.frequency.setValueAtTime(900, t0); bp.frequency.exponentialRampToValueAtTime(3200, t0 + .14);
-    g.gain.setValueAtTime(.0001, t0); g.gain.exponentialRampToValueAtTime(.22, t0 + .02); g.gain.exponentialRampToValueAtTime(.0001, t0 + .16);
-    src.connect(bp).connect(g).connect(c.destination);
-    src.start(t0);
-  }
-  // kind: 'in' (incoming text), 'out' (sent), 'media' (voice/video/image)
-  function blip(kind) {
-    if (!sound || !unlocked) return;
+  // message sound: recorded file chosen by the user (sfx/msg.mp3), decoded once for instant playback
+  let sfxBuf = null;
+  async function loadSfx() {
     try {
-      const c = ctx(), t = c.currentTime + .01;
-      if (kind === 'out' || kind === true) { whoosh(c, t); tone(c, t + .05, 1400, 2100, .07, .05); return; }
-      if (kind === 'media') { tone(c, t, 520, 780, .09, .14, 'triangle'); tone(c, t + .1, 780, 1040, .1, .11, 'triangle'); return; }
-      // incoming: short bright double pop
-      tone(c, t, 1180, 1500, .06, .16, 'sine');
-      tone(c, t + .085, 1560, 1980, .08, .13, 'sine');
+      const r = await fetch(G.sfx || 'sfx/msg.mp3');
+      sfxBuf = await ctx().decodeAudioData(await r.arrayBuffer());
+    } catch (e) { /* no audio */ }
+  }
+  function blip() {
+    if (!sound || !unlocked || !sfxBuf) return;
+    try {
+      const c = ctx(), src = c.createBufferSource(), g = c.createGain();
+      src.buffer = sfxBuf; g.gain.value = .7;
+      src.connect(g).connect(c.destination);
+      src.start();
     } catch (e) { /* no audio */ }
   }
   // browsers allow sound only after the first user gesture
@@ -497,7 +481,7 @@
   function unlock() {
     if (unlocked) return;
     unlocked = true;
-    try { ctx(); } catch (e) { /* no audio */ }
+    try { ctx(); loadSfx(); } catch (e) { /* no audio */ }
     hint.remove();
     removeEventListener('pointerdown', unlock, true); removeEventListener('keydown', unlock, true);
   }

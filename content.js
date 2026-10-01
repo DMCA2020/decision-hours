@@ -9,6 +9,7 @@ window.GROUP = {
  "lockText": "שחזור תחקירי מתוך מקורות פומביים. אף הודעה כאן לא נשלחה במציאות; כל בועה מקושרת למקור שלה.",
  "readOnly": null,
  "loop": "restart",
+ "sfx": "sfx/msg.mp3",
  "interval": 6000,
  "typingMax": 3200,
  "members": {

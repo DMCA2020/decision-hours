@@ -9,6 +9,7 @@ window.GROUP = {
  "lockText": "גרסת המחזה. כל בועה מסומנת \"המחזה\" נוסחה בגוף ראשון על סמך מקור פומבי ואינה ציטוט. הודעות הנובה, ההקלטות והציטוטים נשארו כפי שפורסמו.",
  "readOnly": null,
  "loop": "restart",
+ "sfx": "../sfx/msg.mp3",
  "interval": 6000,
  "typingMax": 3200,
  "members": {

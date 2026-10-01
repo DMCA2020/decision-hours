@@ -384,6 +384,7 @@ group = {
     'lockText': 'שחזור תחקירי מתוך מקורות פומביים. אף הודעה כאן לא נשלחה במציאות; כל בועה מקושרת למקור שלה.',
     'readOnly': None,  # composer visible
     'loop': 'restart',
+    'sfx': 'sfx/msg.mp3',
     'interval': 6000,  # a new message every 6 seconds
     'typingMax': 3200,
     'members': members,
@@ -472,6 +473,7 @@ if os.path.exists(DRAMA_PATH):
     dg['plain'] = True  # bubbles show only who speaks and what they say; details on tap
     dg['pinned'] = 'גרסת המחזה: הדברים נוסחו מחדש בגוף ראשון על סמך המקורות. אלה אינם ציטוטים ואינן הודעות אמיתיות.'
     dg['lockText'] = 'גרסת המחזה. כל בועה מסומנת "המחזה" נוסחה בגוף ראשון על סמך מקור פומבי ואינה ציטוט. הודעות הנובה, ההקלטות והציטוטים נשארו כפי שפורסמו.'
+    dg['sfx'] = '../' + group['sfx']
     for sc in [dg['history']] + dg['scenes']:
         for st in sc:
             if st.get('audio'):
