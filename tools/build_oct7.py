@@ -72,6 +72,21 @@ PERSONS = {'netanyahu', 'gallant', 'halevi', 'ronen', 'gil', 'finkelman', 'basiu
 OVERRIDES = {'T047': 'milsec'}  # updates delivered to the PM, not sent by him
 
 
+def speaker_of(text):
+    """Single named speaker (quotes, recordings): a named person beats the body in their title;
+    no match -> None (caller gives them their own member)."""
+    t = re.sub(r'(?<=[\u05d0-\u05ea])"(?=[\u05d0-\u05ea])', '״', text)
+    best = None
+    for mid, _, aliases, *_ in MEMBERS:
+        for a in aliases:
+            p = t.find(a)
+            if p >= 0:
+                key = (0 if mid in PERSONS else 1, p, -len(a))
+                if best is None or key < best[0]:
+                    best = (key, mid)
+    return best[1] if best else None
+
+
 def sender(text):
     text = re.sub(r'(?<=[\u05d0-\u05ea])"(?=[\u05d0-\u05ea])', '״', text)  # ASCII quote inside Hebrew acronyms -> gershayim
     best = None
@@ -259,6 +274,10 @@ if os.path.exists(REC_PATH):
         }))
 
 # ---- timed quotes mined from the articles and documents (data/extra_*.json) ----
+SHORT_NAMES = {  # display names for speakers that are long titles in the sources
+    'רל"ש הרמטכ"ל סא"ל מתן פלדמן': 'מתן פלדמן, רל״ש הרמטכ״ל',
+    'פעיל חמאס (תקשורת שנקלטה ביחידה 8200)': 'פעיל חמאס (האזנת 8200)',
+}
 EXTRA_KIND = {
     'document_quote': 'ציטוט ממסמך', 'diary_entry': 'רישום ביומן', 'protocol_quote': 'ציטוט מפרוטוקול ועדה, עדות בדיעבד',
     'realtime_quote': 'ציטוט מאותו יום, כפי שפורסם', 'testimony_quote': 'עדות בדיעבד, ציטוט',
@@ -280,9 +299,9 @@ for fn in ('extra_articles.json', 'extra_documents.json'):
             day, mins, sub = ev_day[rel], ev_min[rel], 1
         elif not re.fullmatch(r'[RQN]\d+', rel):
             rel = ''  # unknown id: no reply quote; a recording/quote id keeps its own clock and replies to it
-        who = OVERRIDES.get(x.get('speaker'), None) or sender(x['speaker'])
-        if who == 'staff' and 'מטכ' not in x['speaker']:
-            name = clean(x['speaker'])
+        who = speaker_of(x['speaker']) or 'staff'
+        if who == 'staff':
+            name = SHORT_NAMES.get(x['speaker'], clean(x['speaker']))
             who = 'ext_' + re.sub(r'\W+', '_', name).strip('_')
             extra_members[who] = {'name': name, 'color': '#6d7f8a', 'g': 'm'}
         members_used.add(who)
@@ -397,6 +416,21 @@ if os.path.exists(DRAMA_PATH):
         for st in seq:
             d = drama.get(st.get('id') or '')
             if not d:
+                sid = st.get('id') or ''
+                if sid.startswith(('X', 'Q')):
+                    k = st.get('kind', '')
+                    who_name = dg['members'].get(st.get('from'), {}).get('name', '')
+                    # not something a person said in the group: reconstructions, diary rows, committee lines
+                    # keep only words actually said/written that day; testimonies, documents, diary rows and
+                    # reconstructions stay in the regular version (their content is in the dramatized events)
+                    if sid.startswith('X') and not k.startswith('ציטוט מאותו יום'):
+                        continue
+                    st = dict(st)
+                    if st.get('quotes'):
+                        st['text'] = ' '.join(q['text'] for q in st.pop('quotes'))
+                        st.pop('quotesNote', None)
+                    if st.get('reply') and st['reply'] in drama:
+                        st['reply'] = st['reply'] + 'd1'
                 out.append(st)
                 continue
             for i, msg in enumerate(d['messages']):
@@ -419,6 +453,7 @@ if os.path.exists(DRAMA_PATH):
     dg['history'] = dramatize(dg['history'])
     dg['scenes'] = [dramatize(sc) for sc in dg['scenes']]
     dg['name'] = group['name'] + ' · המחזה'
+    dg['plain'] = True  # bubbles show only who speaks and what they say; details on tap
     dg['pinned'] = 'גרסת המחזה: הדברים נוסחו מחדש בגוף ראשון על סמך המקורות. אלה אינם ציטוטים ואינן הודעות אמיתיות.'
     dg['lockText'] = 'גרסת המחזה. כל בועה מסומנת "המחזה" נוסחה בגוף ראשון על סמך מקור פומבי ואינה ציטוט. הודעות הנובה, ההקלטות והציטוטים נשארו כפי שפורסמו.'
     for sc in [dg['history']] + dg['scenes']:

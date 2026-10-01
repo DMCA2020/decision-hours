@@ -59,6 +59,8 @@
   })();
 
   /* ---------- header ---------- */
+  const PLAIN = !!G.plain;
+  if (PLAIN) root.classList.add('plain');
   $('#groupName').textContent = G.name;
   document.title = G.name;
   const gav = $('#groupAvatar');
@@ -199,8 +201,8 @@
         `<div class="voice"><span class="play">${ICON.play}</span><span class="wave">${bars}</span>` +
         `<span class="vav" style="background:${m.color}">${avatarHTML(step.from)}<i>${ICON.mic}</i></span></div>` +
         `<span class="dur">${esc(step.dur || '0:12')}</span>` +
-        (step.transcript ? `<div class="vt">${step.note ? `<div class="tnote">🕒 ${fmt(step.note)}</div>` : ''}<div class="vtt" dir="auto">${linkify(step.transcript)}</div>` +
-          (step.sources ? `<div class="srcs">${step.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">▶︎ ${esc(s.label)} ↗</a>`).join('')}</div>` : '') + '</div>' : '') +
+        (step.transcript ? `<div class="vt">${step.note && !PLAIN ? `<div class="tnote">🕒 ${fmt(step.note)}</div>` : ''}<div class="vtt" dir="auto">${linkify(step.transcript)}</div>` +
+          (step.sources && !PLAIN ? `<div class="srcs">${step.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">▶︎ ${esc(s.label)} ↗</a>`).join('')}</div>` : '') + '</div>' : '') +
         metaHTML(time, out);
       if (step.info) b.classList.add('rich');
     } else if (step.type === 'poll') {
@@ -211,6 +213,13 @@
     } else {
       const jumbo = !step.reply && isJumbo(step.text);
       if (jumbo) b.classList.add('jumbo');
+      if (PLAIN) {
+        inner = (showSender ? senderHTML(step.from) : '') +
+          (step.reply ? quoteHTML(step.reply) : '') +
+          `<span class="body" dir="auto">${linkify(step.text || '')}</span><span class="spacer"></span>` +
+          metaHTML(time, out);
+        if (step.info) b.classList.add('tap');
+      } else
       inner = (showSender ? senderHTML(step.from) : '') +
         (step.reply ? quoteHTML(step.reply) : '') +
         (step.memorial ? `<div class="memorial">🕯️ ${esc(step.memorial)}</div>` : '') +
@@ -221,8 +230,8 @@
         (step.sources && step.sources.length ? `<div class="srcs">${step.sources.slice(0, 2).map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">📄 ${esc(s.label)} ↗</a>`).join('')}${step.sources.length > 2 ? `<span class="more">+${step.sources.length - 2} מקורות</span>` : ''}</div>` : '') +
         (step.info ? '' : '<span class="spacer"></span>') +
         metaHTML(time, out, false, step.tag);
-      if (step.info) b.classList.add('rich');
-      if (step.memorial) b.classList.add('real');
+      if (step.info && !PLAIN) b.classList.add('rich');
+      if (step.memorial && !PLAIN) b.classList.add('real');
     }
     b.innerHTML = inner;
 
@@ -533,7 +542,7 @@
     const row = (k, v) => v ? `<div class="kv"><dt>${k}</dt><dd>${linkify(v)}</dd></div>` : '';
     openSheet(
       `<div class="sh-head"><span class="av sh-av" style="background:${m.color}">${avatarHTML(step.from)}</span><div><b>${esc(m.name)}</b><small>${esc(step.id)} · ${esc(step.kind || '')}</small></div></div>` +
-      `<dl>${row('שעה', i.time)}${row('משתתפים', i.people)}${row('אירוע', i.event)}${row('החלטה / הנחיה', i.decision)}${row('סוג התיעוד', i.doc)}</dl>` +
+      `<dl>${row('שעה', i.time)}${row('משתתפים', i.people)}${row('מה נאמר / קרה', i.event)}${row('החלטה / הנחיה', i.decision)}${row('הערה', step.note || i.note)}${row('גורל', step.memorial || i.memorial)}${row('סוג התיעוד', i.doc)}</dl>` +
       `<h4>מקורות</h4><ul class="srclist">${(step.sources || []).map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)} ↗</a><small>${esc(new URL(s.url).hostname)}</small></li>`).join('')}</ul>`
     );
   }

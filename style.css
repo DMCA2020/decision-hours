@@ -542,3 +542,8 @@ svg { display: block; fill: currentColor; }
   pointer-events: none; transition: transform .1s;
 }
 .bubble.seeking .knob { transform: scale(1.35); }
+
+/* plain (drama) mode: bubbles look like a real group; tap opens the details */
+.bubble.tap { cursor: pointer; }
+:root.plain .vtt::before { content: none; }
+:root.plain .vt { border-top: 0; padding-top: 0; }
