@@ -245,13 +245,24 @@ if os.path.exists(NM_PATH) and os.path.exists(NMP_PATH):
 BS_PATH = os.path.join(HERE, 'data', 'besieged.json')
 END_OF_DAY = 24 * 60  # block of messages from that day whose time was not published
 if os.path.exists(BS_PATH):
-    bs = [x for x in json.load(open(BS_PATH, encoding='utf-8')) if x.get('type', 'text') == 'text' and (x.get('text') or '').strip()]
+    BMP = os.path.join(HERE, 'data', 'besieged_media_plan.json')
+    bplan = {}
+    for p in (json.load(open(BMP, encoding='utf-8')) if os.path.exists(BMP) else []):
+        mt = p['match']; bplan[(mt['time'], mt['community'], mt['text'])] = p
+    def media_of(x):
+        return bplan.get((x.get('time'), x['community'], x.get('text') or x.get('transcript')))
+    bs = [x for x in json.load(open(BS_PATH, encoding='utf-8'))
+          if (x.get('type', 'text') == 'text' and (x.get('text') or '').strip()) or media_of(x)]
     if any(not x.get('time') for x in bs):
         placed.append(((1, END_OF_DAY, 0), {'type': 'system', 'id': 'S03', 'text': 'הודעות מאותו יום ששעתן לא פורסמה'}))
     for j, x in enumerate(bs):
         m = re.fullmatch(r'(\d{1,2}):(\d{2})', (x.get('time') or '').strip())
         key = (1, int(m.group(1)) * 60 + int(m.group(2)), 2) if m else (1, END_OF_DAY, 1 + j)
-        name = f"{clean(x.get('sender') or 'תושב/ת')}, {clean(x['community'])}"
+        snd = clean(x.get('sender') or 'תושב/ת')
+        if re.search(r'לא צוין|באדיבות', snd):
+            snd = 'תיעוד'
+        snd = re.sub(r'\s*\(.*?\)\s*', ' ', snd).strip()
+        name = f"{snd}, {clean(x['community'])}"
         mid = 'res_' + re.sub(r'\W+', '_', name).strip('_')
         if mid not in nova_members:
             nova_members[mid] = {'name': name, 'color': '#6b7f5e', 'g': 'f' if re.search(r'ת$|ה$', x.get('sender') or '') else 'm'}
@@ -261,12 +272,21 @@ if os.path.exists(BS_PATH):
         t = f'{int(m.group(1)):02d}:{m.group(2)}' if m else ''
         placed.append((key, {
             'from': mid, 'id': f'B{j + 1:04d}', 'time': t, 'kind': kind,
-            'text': clean(x['text']), **({'memorial': clean(x['sender_fate'])} if x.get('sender_fate') else {}),
+            'text': clean(x.get('text') or x.get('transcript') or ''), **({'memorial': clean(x['sender_fate'])} if x.get('sender_fate') else {}),
             'note': clean(grp) + (('. ' if grp else '') + clean(x['note']) if x.get('note') else ''),
             'sources': [{'label': clean(x.get('source_title') or 'מקור'), 'url': x.get('source_url') or x.get('media_page') or ''}],
-            'info': {'time': t or 'לא פורסמה', 'people': name + (f' · {clean(grp)}' if grp else ''), 'event': clean(x['text']), 'decision': '',
+            'info': {'time': t or 'לא פורסמה', 'people': name + (f' · {clean(grp)}' if grp else ''), 'event': clean(x.get('text') or x.get('transcript') or ''), 'decision': '',
                      'doc': kind + (f". {clean(x['note'])}" if x.get('note') else ''), 'caveat': ''},
         }))
+        mp = media_of(x)
+        if mp:  # original video / voice recording from that day
+            st = placed[-1][1]
+            dur = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', os.path.join(HERE, mp['file'])], capture_output=True, text=True).stdout.strip()
+            dd = '%d:%02d' % divmod(round(float(dur or 0)), 60)
+            if x['type'] == 'video':
+                st.update(type='video', src=mp['file'], poster=mp.get('poster', ''), dur=dd, kind='סרטון מקורי מאותו יום, כפי שפורסם')
+            else:
+                st.update(type='voice', audio=mp['file'], dur=dd, transcript=clean(x.get('transcript') or x.get('text') or ''), text='', kind='הקלטה מקורית מאותו יום, כפי שפורסמה')
 
 # ---- recorded speech from the transcripts file (data/recordings.json) ----
 REC_PATH = os.path.join(HERE, 'data', 'recordings.json')

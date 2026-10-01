@@ -1,0 +1,205 @@
+[
+ {
+  "match": {
+   "time": "06:30",
+   "community": "ניר עוז",
+   "text": "ג'ודי וגדי מסתתרים מהרקטות ומתעדים את עצמם"
+  },
+  "file": "media/res/i01.mp4",
+  "poster": "media/res/i01.jpg"
+ },
+ {
+  "match": {
+   "time": "06:32",
+   "community": "כפר עזה",
+   "text": "רועי מתעד שלושה מחבלים בדרכם לקיבוץ במצנחי רחיפה."
+  },
+  "file": "media/res/i02.mp4",
+  "poster": "media/res/i02.jpg"
+ },
+ {
+  "match": {
+   "time": "06:45",
+   "community": "שדרות",
+   "text": "סלומון באזור התעשייה שער הנגב, כשברקע התרעות צבע אדום (אזעקה מוקלטת)"
+  },
+  "file": "media/res/i04.mp4",
+  "poster": "media/res/i04.jpg"
+ },
+ {
+  "match": {
+   "time": "07:18",
+   "community": "כרם שלום",
+   "text": "משפחת טייטלבאום בממ\"ד, וברקע נשמע ירי מבחוץ"
+  },
+  "file": "media/res/i05.mp4",
+  "poster": "media/res/i05.jpg"
+ },
+ {
+  "match": {
+   "time": "08:04",
+   "community": "ניר עוז",
+   "text": "בתה הקטנה של גלית, תמר, מתעדת את עצמה בתוך הממ\"ד החשוך בכיסופים"
+  },
+  "file": "media/res/i07.mp4",
+  "poster": "media/res/i07.jpg"
+ },
+ {
+  "match": {
+   "time": "08:10",
+   "community": "נירים",
+   "text": "קמיל וניצה נצורות בממ\"ד. ברקע נשמעים המחבלים בבית"
+  },
+  "file": "media/res/i08.mp4",
+  "poster": "media/res/i08.jpg"
+ },
+ {
+  "match": {
+   "time": "08:30",
+   "community": "אופקים",
+   "text": "השכנים ממול מתעדים את השריפה בבית משפחת ביליה"
+  },
+  "file": "media/res/i09.mp4",
+  "poster": "media/res/i09.jpg"
+ },
+ {
+  "match": {
+   "time": "09:00",
+   "community": "עין השלושה",
+   "text": "סאנשיין מרגיעה את הילדים בממ\"ד"
+  },
+  "file": "media/res/i10.mp4",
+  "poster": "media/res/i10.jpg"
+ },
+ {
+  "match": {
+   "time": "09:10",
+   "community": "חולית",
+   "text": "אלה מנסה למנוע מהאש להתפשט"
+  },
+  "file": "media/res/i11.mp4",
+  "poster": "media/res/i11.jpg"
+ },
+ {
+  "match": {
+   "time": "09:30",
+   "community": "כפר עזה",
+   "text": "גדר הקיבוץ מחלון ביתו של בר רגע לפני החדירה"
+  },
+  "file": "media/res/i12.mp4",
+  "poster": "media/res/i12.jpg"
+ },
+ {
+  "match": {
+   "time": "09:30",
+   "community": "ניר עוז",
+   "text": "שריפות בקיבוץ ממצלמות האבטחה ההיקפיות"
+  },
+  "file": "media/res/i13.mp4",
+  "poster": "media/res/i13.jpg"
+ },
+ {
+  "match": {
+   "time": "09:50",
+   "community": "שדרות",
+   "text": "כוחות הביטחון מגיעים לשכונה"
+  },
+  "file": "media/res/i14.mp4",
+  "poster": "media/res/i14.jpg"
+ },
+ {
+  "match": {
+   "time": "10:30",
+   "community": "אופקים",
+   "text": "השכנים ממול מתעדים את החילוץ של משפחת ביליה מהגג"
+  },
+  "file": "media/res/i15.mp4",
+  "poster": "media/res/i15.jpg"
+ },
+ {
+  "match": {
+   "time": "11:00",
+   "community": "עין השלושה",
+   "text": "קורין ותומר בממ\"ד בזמן שהמחבלים בבית"
+  },
+  "file": "media/res/i16.mp4",
+  "poster": "media/res/i16.jpg"
+ },
+ {
+  "match": {
+   "time": "11:30",
+   "community": "רעים",
+   "text": "כוחות צה\"ל בקיבוץ"
+  },
+  "file": "media/res/i17.mp4",
+  "poster": "media/res/i17.jpg"
+ },
+ {
+  "match": {
+   "time": "12:00",
+   "community": "נחל עוז",
+   "text": "רן מתצפת על הרחוב ממרפסת הקומה השנייה."
+  },
+  "file": "media/res/i18.mp4",
+  "poster": "media/res/i18.jpg"
+ },
+ {
+  "match": {
+   "time": "13:00",
+   "community": "שדרות",
+   "text": "כוח מגלן מפנה את המתפללים"
+  },
+  "file": "media/res/i19.mp4",
+  "poster": "media/res/i19.jpg"
+ },
+ {
+  "match": {
+   "time": "14:52",
+   "community": "כיסופים",
+   "text": "כוח צה\"ל בהובלת סער מרגוליס."
+  },
+  "file": "media/res/i20.mp4",
+  "poster": "media/res/i20.jpg"
+ },
+ {
+  "match": {
+   "time": "16:00",
+   "community": "עין השלושה",
+   "text": "גל מכין המבורגרים למשפחתו במכשיר הנינג'ה"
+  },
+  "file": "media/res/i21.mp4",
+  "poster": "media/res/i21.jpg"
+ },
+ {
+  "match": {
+   "time": "12:00",
+   "community": "בארי",
+   "text": "They are burning us, we don't succeed... They are burning us. They are burning us"
+  },
+  "file": "media/res/V1.mp3"
+ },
+ {
+  "match": {
+   "time": "13:54",
+   "community": "בארי",
+   "text": "אין לי איך, אין לי, אין לי איך"
+  },
+  "file": "media/res/V2.m4a"
+ },
+ {
+  "match": {
+   "time": "17:00",
+   "community": "בארי",
+   "text": "בואו עכשיו, פוצצו לנו את הבית. אמא וכרמל מתו, אבא כמעט כן, אני גם לא רוצה למות. בואו עכשיו"
+  },
+  "file": "media/res/V3.m4a"
+ },
+ {
+  "match": {
+   "time": null,
+   "community": "בארי",
+   "text": "מה קורה עם הכוחות לבארי? מה קורה עם זה?"
+  },
+  "file": "media/res/amit.m4a"
+ }
+]
