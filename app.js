@@ -593,7 +593,18 @@
   const lazy = { on: false };
   const sentinel = document.createElement('div');
   sentinel.className = 'sentinel';
-  const io = 'IntersectionObserver' in window ? new IntersectionObserver((en) => { if (en.some((x) => x.isIntersecting)) loadMore(30); }, { root: chat, rootMargin: '0px 0px 900px 0px' }) : null;
+  // as the reader nears the end, messages drip in one after another (each with its pop-in), not in a batch
+  let near = false, dripT = null;
+  function drip() {
+    dripT = null;
+    if (!near || !lazy.on || paused) return;
+    loadMore(1);
+    dripT = setTimeout(drip, 140);
+  }
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver((en) => {
+    near = en.some((x) => x.isIntersecting);
+    if (near && !dripT) drip();
+  }, { root: chat, rootMargin: '0px 0px 250px 0px' }) : null;
   function remainingMsgs() {
     let n = 0;
     for (let j = lazy.i; j < lazy.scene.length; j++) if (MSG_TYPES.has(lazy.scene[j].type) && lazy.scene[j].from) n++;
@@ -605,8 +616,7 @@
     const left = remainingMsgs();
     if (left) place(chip('unread', `${left.toLocaleString('he-IL')} הודעות שלא נקראו`), { quiet: true });
     feed.appendChild(sentinel);
-    loadMore(30);
-    if (io) io.observe(sentinel);
+    if (io) io.observe(sentinel); else loadMore(60);
   }
   function loadMore(n) {
     if (!lazy.on || lazy.token !== runToken) return;
