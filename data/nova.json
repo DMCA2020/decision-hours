@@ -1,0 +1,273 @@
+[
+ {
+  "name": "רוני שטרית",
+  "age": 24,
+  "fate": "נרצחה",
+  "recipient": "אמא, לילך",
+  "time": "06:30",
+  "text": "הכול טוב",
+  "lang": "he",
+  "source_title": "ynet, \"מי יודע איך הילדה שלי נרצחה?\": ההורים של רוני מבקשים לדעת מה קרה לה",
+  "source_url": "https://www.ynet.co.il/parents/article/rjwkpbfet",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "Sivan Shaarbany",
+  "age": 21,
+  "fate": "נרצחה",
+  "recipient": "אמא, קרן",
+  "time": "06:45",
+  "text": "Everything is fine.",
+  "lang": "en",
+  "source_title": "Times of Israel, Nova families mourn on Oct. 7 anniversary",
+  "source_url": "https://www.timesofisrael.com/two-years-later-we-still-have-no-answers-nova-families-mourn-on-oct-7-anniversary/",
+  "quote_status": "פורסם באנגלית, בתרגום המקור"
+ },
+ {
+  "name": "רחלי, בתה של פולינה דב",
+  "age": 25,
+  "fate": "נרצחה",
+  "recipient": "אמא, פולינה",
+  "time": "06:51",
+  "text": "אמא, יורים פה. היינו במסיבה, בורחים הביתה",
+  "lang": "he",
+  "source_title": "ynet, \"לאבד ילד יחיד זה הכאב הכי גדול\"",
+  "source_url": "https://www.ynet.co.il/news/article/yokra14123876",
+  "quote_status": "ציטוט מדויק במקור. שם המשפחה לא פורסם בכתבה"
+ },
+ {
+  "name": "זיו פרנקל",
+  "age": 22,
+  "fate": "נרצחה",
+  "recipient": "אבא, רוביק",
+  "time": "07:50",
+  "text": "אבל אני בסדר ואל תגיד לאמא כלום",
+  "lang": "he",
+  "source_title": "ynet לאשה, זוהו גופותיהן של החברות הטובות זיו פרנקל ולין דפני",
+  "source_url": "https://www.ynet.co.il/laisha/article/hj003pts11p",
+  "quote_status": "ציטוט חלקי: המקור מצטט רק את החלק הזה של ההודעה"
+ },
+ {
+  "name": "רוני שטרית",
+  "age": 24,
+  "fate": "נרצחה",
+  "recipient": "אמא, לילך",
+  "time": "08:01",
+  "text": "תהיי רגועה",
+  "lang": "he",
+  "source_title": "ynet, \"מי יודע איך הילדה שלי נרצחה?\": ההורים של רוני מבקשים לדעת מה קרה לה",
+  "source_url": "https://www.ynet.co.il/parents/article/rjwkpbfet",
+  "quote_status": "ציטוט מדויק במקור. לפי המקור, ההודעה האחרונה שלה"
+ },
+ {
+  "name": "Sivan Shaarbany",
+  "age": 21,
+  "fate": "נרצחה",
+  "recipient": "אמא, קרן",
+  "time": "08:10",
+  "text": "They're shooting at us. We're hiding. I'm scared.",
+  "lang": "en",
+  "source_title": "Times of Israel, Nova families mourn on Oct. 7 anniversary",
+  "source_url": "https://www.timesofisrael.com/two-years-later-we-still-have-no-answers-nova-families-mourn-on-oct-7-anniversary/",
+  "quote_status": "פורסם באנגלית, בתרגום המקור"
+ },
+ {
+  "name": "הירש גולדברג-פולין",
+  "age": 23,
+  "fate": "נחטף ונרצח בשבי",
+  "recipient": "אמא, רייצ'ל",
+  "time": "08:11",
+  "text": "אני אוהב אותך",
+  "lang": "he",
+  "source_title": "N12, רייצ'ל גולדברג-פולין",
+  "source_url": "https://www.mako.co.il/tvbee-tv-news/Article-f242ac17209ad91026.htm",
+  "extra_sources": [
+   [
+    "CBS News, 60 Minutes, השעה 08:11",
+    "https://www.cbsnews.com/news/rachel-goldberg-polin-grief-hersh-60-minutes-transcript/"
+   ]
+  ],
+  "quote_status": "הנוסח העברי מ־N12; השעה 08:11 מ־CBS"
+ },
+ {
+  "name": "הירש גולדברג-פולין",
+  "age": 23,
+  "fate": "נחטף ונרצח בשבי",
+  "recipient": "אמא, רייצ'ל",
+  "time": "08:11",
+  "text": "אני מצטער",
+  "lang": "he",
+  "source_title": "N12, רייצ'ל גולדברג-פולין",
+  "source_url": "https://www.mako.co.il/tvbee-tv-news/Article-f242ac17209ad91026.htm",
+  "extra_sources": [
+   [
+    "CBS News, 60 Minutes, השעה 08:11",
+    "https://www.cbsnews.com/news/rachel-goldberg-polin-grief-hersh-60-minutes-transcript/"
+   ]
+  ],
+  "quote_status": "הנוסח העברי מ־N12; השעה 08:11 מ־CBS"
+ },
+ {
+  "name": "קארין ז'ורנו",
+  "age": 23,
+  "fate": "נרצחה",
+  "recipient": "קבוצת הווטסאפ המשפחתית",
+  "time": "08:40",
+  "text": "אם אני לא חוזרת הביתה תדעו שאני אוהבת אתכם",
+  "lang": "he",
+  "source_title": "ynet, \"אחרי 11 יום הגיעה הדפיקה\"",
+  "source_url": "https://www.ynet.co.il/health/article/rkyz6ftt0",
+  "extra_sources": [
+   [
+    "mako, השעה 08:42 לפי הכתבה",
+    "https://www.mako.co.il/home-family-relationship/Article-628bf800c766e81027.htm"
+   ]
+  ],
+  "quote_status": "ציטוט מדויק במקור. ב־mako מופיעה השעה 08:42"
+ },
+ {
+  "name": "דביר רחמים",
+  "age": 23,
+  "fate": "נרצח",
+  "recipient": "קבוצת הווטסאפ המשפחתית",
+  "time": "08:42",
+  "text": "אם אני לא אצא מזה חי, תדעו שאני אוהב אתכם עד בלי סוף. אתם הלב שלי",
+  "lang": "he",
+  "source_title": "ynet, דביר חזר למסיבה לטפל בפצועים",
+  "source_url": "https://www.ynet.co.il/news/article/ryyyyxzdt",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "דביר רחמים",
+  "age": 23,
+  "fate": "נרצח",
+  "recipient": "אבא",
+  "time": "08:50",
+  "time_note": "לפי המקור, שמונה דקות אחרי הודעת 08:42",
+  "text": "אבא, אני מתפלל לאלוהים, הצבא שלנו ינצח",
+  "lang": "he",
+  "source_title": "ynet, דביר חזר למסיבה לטפל בפצועים",
+  "source_url": "https://www.ynet.co.il/news/article/ryyyyxzdt",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "דביר רחמים",
+  "age": 23,
+  "fate": "נרצח",
+  "recipient": "קבוצת החברים",
+  "time": "08:54",
+  "text": "אני אוהב אתכם חברים שלי, אחים שלי. אם אני לא אצא מזה חי, תדעו שאהבתי אתכם מאוד. אני מפחד למות. שמע ישראל ה' אלוהינו ה' אחד",
+  "lang": "he",
+  "source_title": "ynet, דביר חזר למסיבה לטפל בפצועים",
+  "source_url": "https://www.ynet.co.il/news/article/ryyyyxzdt",
+  "quote_status": "ציטוט מדויק במקור. לפי המקור, ההודעה האחרונה שלו"
+ },
+ {
+  "name": "זיו פרנקל",
+  "age": 22,
+  "fate": "נרצחה",
+  "recipient": "אמא, דניאל. נשלח מהטלפון של לין דפני",
+  "time": "09:04",
+  "text": "אמא אנחנו בפיגוע, אני אוהבת אתכם",
+  "lang": "he",
+  "source_title": "ynet לאשה, זוהו גופותיהן של החברות הטובות זיו פרנקל ולין דפני",
+  "source_url": "https://www.ynet.co.il/laisha/article/hj003pts11p",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "רון יהודאי",
+  "age": null,
+  "fate": "נרצח",
+  "recipient": "אבא, יורם",
+  "time": "11:39",
+  "text": "יהיה בסדר, אוהב 💛",
+  "lang": "he",
+  "source_title": "ynet, \"ארדוף אותך עד שתקים ועדת חקירה ממלכתית\"",
+  "source_url": "https://www.ynet.co.il/news/article/h1ztycdjwe",
+  "quote_status": "ציטוט מדויק במקור. לפי המקור, נשלח עם לב צהוב"
+ },
+ {
+  "name": "רון יהודאי",
+  "age": null,
+  "fate": "נרצח",
+  "recipient": "אבא, יורם",
+  "time": "11:39",
+  "text": "אנחנו נתעדכן",
+  "lang": "he",
+  "source_title": "ynet, \"ארדוף אותך עד שתקים ועדת חקירה ממלכתית\"",
+  "source_url": "https://www.ynet.co.il/news/article/h1ztycdjwe",
+  "quote_status": "ציטוט מדויק במקור. לפי המקור, נרצח במכולה הצהובה ב־11:47"
+ },
+ {
+  "name": "נועה חיאל",
+  "age": 27,
+  "fate": "נרצחה",
+  "recipient": "אמא, אביאלה",
+  "time": null,
+  "text": "אמא, היו אזעקות, יש טילים. אנחנו בסדר, נדבר מאוחר יתר כשנגיע למקום בטוח",
+  "lang": "he",
+  "source_title": "ynet, עמית ספג ירי והציל נמלטים מהמסיבה | הנרצחים והנופלים",
+  "source_url": "https://www.ynet.co.il/news/article/skufh00qwp",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "אופק רביע",
+  "age": 23,
+  "fate": "נרצח",
+  "recipient": "אמא, ליאת",
+  "time": null,
+  "text": "אני לא יכול לדבר או להשמיע ציוץ. אנחנו מוקפים",
+  "lang": "he",
+  "source_title": "ynet, \"החזרנו את הבנים בשקים\": ההורים שיצאו לחפש את הילדים בנובה",
+  "source_url": "https://www.ynet.co.il/health/article/rjze00fpyex",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "נדב ברטל",
+  "age": 24,
+  "fate": "נרצח",
+  "recipient": "אבא, דידי",
+  "time": null,
+  "text": "אין פה כלום",
+  "lang": "he",
+  "source_title": "ynet, \"החזרנו את הבנים בשקים\": ההורים שיצאו לחפש את הילדים בנובה",
+  "source_url": "https://www.ynet.co.il/health/article/rjze00fpyex",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "נועה זנדר",
+  "age": null,
+  "fate": "נרצחה",
+  "recipient": "אחות, חן",
+  "time": null,
+  "text": "איפה יש חדירות מחבלים? תני קצת עדכונים",
+  "lang": "he",
+  "source_title": "ynet לאשה, חן זנדר שכלה את אחותה נועה במסיבה",
+  "source_url": "https://www.ynet.co.il/laisha/article/rkebtrynt",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "מפל אדם",
+  "age": null,
+  "fate": "נרצחה",
+  "recipient": "",
+  "time": null,
+  "text": "הם מעלינו, אני אוהבת אתכם",
+  "lang": "he",
+  "source_title": "ישראל היום, מעיין אדם חושפת שיחה אחרונה עם אחותה",
+  "source_url": "https://www.israelhayom.co.il/lifestyle/family-and-parenting/article/16571678",
+  "quote_status": "ציטוט מדויק במקור"
+ },
+ {
+  "name": "אוריה ריקרדו",
+  "age": 26,
+  "fate": "נרצחה",
+  "recipient": "אמא, חני",
+  "time": null,
+  "text": "אמא, אני אוהבת אותך מאוד",
+  "lang": "he",
+  "source_title": "מעריב, חני ריקרדו, שבתה אוריה נרצחה במסיבת הנובה, בראיון",
+  "source_url": "https://www.maariv.co.il/news/israel/article-1137912",
+  "quote_status": "ציטוט מדויק במקור"
+ }
+]

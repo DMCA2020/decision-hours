@@ -1,0 +1,212 @@
+[
+ {
+  "section": 9,
+  "video_ts": "05:38",
+  "speaker": "הרצי הלוי",
+  "status": "not_found_in_article",
+  "written_text": null,
+  "article_url": "https://www.mako.co.il/news-military/be11d799e08b8910/Article-e14edcb9a41ba91026.htm",
+  "article_title": "mako / N12, ההונאה של חמאס, מחדלי המודיעין והלילה שקדם לאסון: הקלטות הרצי הלוי על 7 באוקטובר",
+  "note": "Article only paraphrases this (בערב שישי, ממש לפני כניסת החג, הוא נפגש עם בכיר מאוד לדבריו בשב\"כ... גלשו גם למצב בעזה). The only direct quote in that paragraph, \"אנחנו לא יודעים כלום עדיין, שנינו\", is not in the ASR excerpt."
+ },
+ {
+  "section": 9,
+  "video_ts": "06:23",
+  "speaker": "הרצי הלוי",
+  "status": "not_found_in_article",
+  "written_text": null,
+  "article_url": "https://www.mako.co.il/news-military/be11d799e08b8910/Article-e14edcb9a41ba91026.htm",
+  "article_title": "mako / N12, ההונאה של חמאס, מחדלי המודיעין והלילה שקדם לאסון: הקלטות הרצי הלוי על 7 באוקטובר",
+  "note": "Article paraphrases the 03:10 call in reported speech, quoting only the words \"סימנים מחשידים\" and \"בשגרה\"; no printed quote of the passage. Paraphrase confirms ASR \"הפקו\" = engaged in checking by שב\"כ and צה\"ל."
+ },
+ {
+  "section": 9,
+  "video_ts": "07:12",
+  "speaker": "הרצי הלוי",
+  "status": "fragment_only",
+  "written_text": "לא להגיד לעצמנו שזה שום דבר",
+  "article_url": "https://www.mako.co.il/news-military/be11d799e08b8910/Article-e14edcb9a41ba91026.htm",
+  "article_title": "mako / N12, ההונאה של חמאס, מחדלי המודיעין והלילה שקדם לאסון: הקלטות הרצי הלוי על 7 באוקטובר",
+  "note": "Only two short fragments are quoted, inside narration: \"לא להגיד לעצמנו שזה שום דבר\" and \"הטבע האנושי הוא לזרום עם מה שמסתדר\" (article: \"לזרום עם\", ASR: \"לזרום ממה\"). Rest is paraphrased."
+ },
+ {
+  "section": 9,
+  "video_ts": "07:12",
+  "speaker": "הרצי הלוי",
+  "status": "partial",
+  "written_text": "אני מקבל את הערכת המודיעין, נראה לי הגיוני. בואו נקבל את הבוקר חזק יותר. מקסימום נבין בסוף שלא היה כלום",
+  "article_url": "https://www.mako.co.il/news-military/be11d799e08b8910/Article-e14edcb9a41ba91026.htm",
+  "article_title": "mako / N12, ההונאה של חמאס, מחדלי המודיעין והלילה שקדם לאסון: הקלטות הרצי הלוי על 7 באוקטובר",
+  "note": "Covers only the end of the excerpt (from \"אני מקבל את הערכת המודיעין\"). ASR \"ולכל היותר\" is \"מקסימום נבין בסוף שלא היה כלום\" in print. Opening (talk with Yaron at ~04:00, not deciding from bed, writing) is paraphrased: article says the call was at 04:00, ASR \"16\" is garbled."
+ },
+ {
+  "section": 8,
+  "video_ts": "05:44",
+  "speaker": "הרצי הלוי",
+  "status": "matched",
+  "written_text": "השיחות האלה לא מתקיימות מהמיטות, לא מתקיימות בנמנום, מתקיימות עם כתיבה, מתקיימות בישיבה, זה לא חמש דקות, זה שעות. ירון, אני, ראש אמ\"ץ, רח\"ט מבצעים, גורמי מודיעין, שב\"כ, צה\"ל, אף אחד לא אומר, 'תעשו כך וכך' וחוזר לישון.",
+  "article_url": "https://www.mako.co.il/news-military/2025_q3/Article-8d2a34473053991026.htm",
+  "article_title": "mako / N12, הקלטות הרמטכ\"ל לשעבר על 7 באוקטובר: \"איך לא יודעים שכל כך הרבה אנשים נערכים? זה כישלון מודיעיני\"",
+  "note": "Article continues with \"לא מזהים נכון\". ASR \"רחת\" = רח\"ט; article drops ASR \"טוב,\". Same speech, Halevi to Ein HaBesor residents."
+ },
+ {
+  "section": 5,
+  "video_ts": "00:00",
+  "speaker": "יואב גלנט",
+  "status": "matched",
+  "written_text": "הבת שלי מתקשרת אליי מתל אביב, ואומרת לי: \"יש אזעקות בתל אביב\". דקה אחרי כן אני מרים טלפון לרמטכ\"ל והוא אומר לי: \"זה מעזה, זה לא רק רקטות, יש פה גם משהו קרקעי - אני נכנס להערכת מצב\".",
+  "article_url": "https://www.mako.co.il/special-politics/Article-f0dc39bc717d491027.htm",
+  "article_title": "mako / N12, הוויכוח עם נתניהו בחדר הסגור, והדיון הדרמטי על חיסול נסראללה | יואב גלנט בריאיון ראשון לחדשות 12",
+  "note": "ASR \"אזרקות\" = אזעקות. Same text at the 2025_q1 path."
+ },
+ {
+  "section": 12,
+  "video_ts": "05:46",
+  "speaker": "סגן אלוף שחר, טייס מסוקי קרב בטייסת 113",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "12:17",
+  "speaker": "סגן אלוף שחר, טייס מסוקי קרב",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "12:17",
+  "speaker": "סגן אלוף שחר, טייס מסוקי קרב",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "13:54",
+  "speaker": "י', טייס ותיק בבור השליטה של חיל האוויר (קול משוחזר בבינה מלאכותית)",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "30:56",
+  "speaker": "סגן אלוף שחר, טייס מסוקי קרב",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "32:33",
+  "speaker": "סגן אלוף שחר, טייס מסוקי קרב",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "19:45",
+  "speaker": "ש', בכיר במערך הכטמ״ם (קול משוחזר)",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 5,
+  "video_ts": "00:48",
+  "speaker": "יואב גלנט",
+  "status": "matched",
+  "written_text": "אני נכנס אליו לחדר בהערכת המצב שלו לפני שמונה בבוקר, רואה שיש פה תחושה של אי הבנה. אין אובדן עשתונות, אבל יש תחושה של אי הבנה, שלא יודעים מה קורה בכל מקום.",
+  "article_url": "https://www.mako.co.il/special-politics/Article-f0dc39bc717d491027.htm",
+  "article_title": "mako / N12, הוויכוח עם נתניהו בחדר הסגור, והדיון הדרמטי על חיסול נסראללה | יואב גלנט בריאיון ראשון לחדשות 12",
+  "note": "Article sentence begins \"אבל אני נכנס...\"; print has \"אי הבנה\" without hyphen and \"שלא יודעים\"."
+ },
+ {
+  "section": 5,
+  "video_ts": "02:23",
+  "speaker": "יואב גלנט",
+  "status": "matched",
+  "written_text": "בשמונה בהערכת מצב, אני אומר לכולם: \"זאת מלחמה\". פתיחת כל המחסנים, כל מה שיש, תגייסו",
+  "article_url": "https://www.mako.co.il/special-politics/Article-f0dc39bc717d491027.htm",
+  "article_title": "mako / N12, הוויכוח עם נתניהו בחדר הסגור, והדיון הדרמטי על חיסול נסראללה | יואב גלנט בריאיון ראשון לחדשות 12",
+  "note": "Span ends where the ASR excerpt ends; article continues \"את כל מי שאפשר, סדיר ומילואים. תשלחו אותם דרומה...\". Print: \"בהערכת מצב\" (ASR \"הערכת מצב\")."
+ },
+ {
+  "section": 13,
+  "video_ts": "01:46",
+  "speaker": "טייס משטרה וכוח משטרה על הקרקע (רשת הקשר)",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.youtube.com/watch?v=-hpaf7S72W0",
+  "article_title": "כאן חדשות (משה שטיינמץ, חדשות הערב 11.01.24), העימות של המשטרה עם חיל האוויר ב-7 באוקטובר - נחשף",
+  "note": "Report exists as video only (YouTube description, no transcript); no written kan.org.il article found that prints these radio-net exchanges."
+ },
+ {
+  "section": 12,
+  "video_ts": "19:45",
+  "speaker": "ש', בכיר במערך הכטמ״ם (קול משוחזר)",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "37:48",
+  "speaker": "י', טייס ותיק בבור השליטה של חיל האוויר (קול משוחזר)",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 12,
+  "video_ts": "49:02",
+  "speaker": "דניאל, רבש״ץ קיבוץ נירים",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ },
+ {
+  "section": 13,
+  "video_ts": "04:13",
+  "speaker": "טייס משטרה / כוח משטרה בבארי (רשת הקשר)",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.youtube.com/watch?v=-hpaf7S72W0",
+  "article_title": "כאן חדשות (משה שטיינמץ, חדשות הערב 11.01.24), העימות של המשטרה עם חיל האוויר ב-7 באוקטובר - נחשף",
+  "note": "Report exists as video only (YouTube description, no transcript); no written kan.org.il article found that prints these radio-net exchanges."
+ },
+ {
+  "section": 12,
+  "video_ts": "43:22",
+  "speaker": "טייס מסוק קרב (שמו לא נמסר בקטע)",
+  "status": "no_written_source",
+  "written_text": null,
+  "article_url": "https://www.kan.org.il/content/kan-news/defense/798853/",
+  "article_title": "כאן חדשות, איפה היה חיל האוויר ב-7 באוקטובר?",
+  "note": "Kan written report on זמן אמת s8e10 (\"כשנפלו השמיים\") prints only two quotes from a senior UAV officer (pre-war training) not in this excerpt; episode page has only a synopsis. Secondary write-ups (inn, kipa, srugim, ch10, walla) checked, none print this passage."
+ }
+]
