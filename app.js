@@ -67,7 +67,7 @@
   gav.style.background = G.avatarBg || '#dfe5e7';
   gav.innerHTML = G.avatar ? `<span>${G.avatar}</span>` : ICON.group;
   const others = Object.keys(G.members).filter((k) => k !== 'me');
-  const defaultSub = others.map((k) => memberLabel(k)).concat('את/ה').join(', ');
+  const defaultSub = G.subtitle || others.map((k) => memberLabel(k)).concat('את/ה').join(', ');
   setSub(defaultSub, false);
 
   function memberLabel(id) {
@@ -589,6 +589,9 @@
     ro.textContent = G.readOnly;
     ro.addEventListener('click', () => G.about && openSheet(G.about));
   }
+
+  // header tap opens the group details, like WhatsApp's group info
+  document.querySelector('.gtitle').addEventListener('click', () => G.about && openSheet(G.about));
 
   /* ---------- composer ---------- */
   const composer = document.querySelector('.composer');
