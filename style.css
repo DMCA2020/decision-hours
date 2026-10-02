@@ -416,7 +416,7 @@ svg { display: block; fill: currentColor; }
 .composer.typing-on .cam { display: none; }
 
 /* ---------- mobile: become the real app, full screen ---------- */
-@media (max-width: 560px), (max-height: 560px) {
+@media (max-width: 899px), (max-height: 560px) {
   body { background: var(--header); }
   .stage { padding: 0; display: block; }
   .phone { width: 100%; height: 100dvh; border-radius: 0; padding: 0; background: none; box-shadow: none; }
@@ -566,7 +566,7 @@ svg { display: block; fill: currentColor; }
   background: rgba(17, 27, 33, .78); color: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
   white-space: nowrap;
 }
-@media (max-width: 560px), (max-height: 560px) { .sndhint { top: calc(124px + env(safe-area-inset-top)); } }
+@media (max-width: 899px), (max-height: 560px) { .sndhint { top: calc(124px + env(safe-area-inset-top)); } }
 
 /* jump to hour */
 .hours { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 8px; margin: 8px 0 4px; }
@@ -593,7 +593,7 @@ svg { display: block; fill: currentColor; }
 .chats { position: absolute; inset: 0; z-index: 35; background: var(--field); color: var(--text); display: flex; flex-direction: column; }
 .chats[hidden] { display: none; }
 .chats-head { flex: none; display: flex; align-items: center; gap: 8px; padding: 50px 8px 0; height: 108px; background: var(--header); color: var(--header-fg); font-size: 19px; }
-@media (max-width: 560px), (max-height: 560px) { .chats-head { padding-top: env(safe-area-inset-top); height: calc(58px + env(safe-area-inset-top)); } }
+@media (max-width: 899px), (max-height: 560px) { .chats-head { padding-top: env(safe-area-inset-top); height: calc(58px + env(safe-area-inset-top)); } }
 :root.noframe .chats-head { padding-top: 0; height: 58px; }
 .chats-head .icon svg { transform: scaleX(-1); }
 .chats-list { flex: 1; overflow-y: auto; }
@@ -605,3 +605,48 @@ svg { display: block; fill: currentColor; }
 .chatrow b { display: block; font-size: 16px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .chatrow small { display: block; color: var(--meta); font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .chats-sec { padding: 14px 16px 6px; color: var(--fab); font-size: 13px; font-weight: 600; }
+
+/* ---------- desktop: WhatsApp Desktop layout (rail + chat list + chat) ---------- */
+:root { --panel: #f0f2f5; --side-bg: #fff; --line: #e9edef; --icon2: #54656f; --active: #f0f2f5; }
+:root[data-theme="dark"] { --panel: #202c33; --side-bg: #111b21; --line: #222d34; --icon2: #aebac1; --active: #2a3942; }
+.rail, .side { display: none; }
+@media (min-width: 900px) and (min-height: 561px) {
+  :root:not(.mockup):not(.noframe) body { background: var(--side-bg); }
+  :root:not(.mockup):not(.noframe) .stage { padding: 0; display: block; height: 100dvh; }
+  :root:not(.mockup):not(.noframe) .phone { width: 100%; height: 100dvh; border-radius: 0; padding: 0; background: var(--side-bg); box-shadow: none; display: flex; }
+  :root:not(.mockup):not(.noframe) .phone::before, :root:not(.mockup):not(.noframe) .phone::after,
+  :root:not(.mockup):not(.noframe) .island, :root:not(.mockup):not(.noframe) .floor, :root:not(.mockup):not(.noframe) .statusbar { display: none; }
+  :root:not(.mockup):not(.noframe) .screen { flex: 1; min-width: 0; border-radius: 0; }
+  :root:not(.mockup):not(.noframe) .rail { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 64px; flex: none; padding-top: 14px; background: var(--panel); border-inline-end: 1px solid var(--line); }
+  .rail-i { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--icon2); }
+  .rail-i svg { width: 24px; height: 24px; }
+  .rail-i.on { background: rgba(0, 0, 0, .08); color: var(--text); }
+  :root:not(.mockup):not(.noframe) .side { display: flex; flex-direction: column; flex: none; width: clamp(340px, 30vw, 440px); background: var(--side-bg); border-inline-end: 1px solid var(--line); }
+  .side-head { display: flex; align-items: center; height: 64px; padding: 0 20px; font-size: 22px; color: var(--text); }
+  .side-head b { font-weight: 700; }
+  .side-search { display: flex; align-items: center; gap: 10px; margin: 0 14px 8px; padding: 0 14px; height: 38px; border-radius: 19px; background: var(--panel); color: var(--icon2); }
+  .side-search svg { width: 20px; height: 20px; flex: none; }
+  .side-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 15px; color: var(--text); }
+  .side-filters { display: flex; gap: 8px; padding: 2px 14px 10px; }
+  .side-filters button { padding: 6px 14px; border-radius: 16px; background: var(--panel); color: var(--icon2); font-size: 14px; }
+  .side-filters button.on { background: #d9fdd3; color: #008069; }
+  :root[data-theme="dark"] .side-filters button.on { background: #0a332c; color: #00a884; }
+  .side-list { flex: 1; overflow-y: auto; }
+  .side-list .chatrow { border-bottom: 1px solid var(--line); color: var(--text); }
+  .side-list .chatrow.active { background: var(--active); }
+  .chats-empty { padding: 30px; text-align: center; color: var(--meta); }
+  /* chat pane: WhatsApp Desktop look */
+  :root:not(.mockup):not(.noframe) .topbar { background: var(--panel); color: var(--text); height: 64px; padding: 0 16px; border-inline-start: 1px solid var(--line); }
+  :root:not(.mockup):not(.noframe) .topbar .icon { color: var(--icon2); }
+  :root:not(.mockup):not(.noframe) .topbar .back { display: none; }
+  :root:not(.mockup):not(.noframe) .gsub { color: var(--meta); opacity: 1; }
+  :root:not(.mockup):not(.noframe) .gavatar { width: 40px; height: 40px; }
+  :root:not(.mockup):not(.noframe) .composer { background: var(--panel); padding: 8px 16px 10px; }
+  :root:not(.mockup):not(.noframe) .field { border-radius: 8px; min-height: 42px; box-shadow: none; }
+  :root:not(.mockup):not(.noframe) .fab { background: transparent; color: var(--icon2); box-shadow: none; }
+  :root:not(.mockup):not(.noframe) .chat-inner { padding-inline: 5%; }
+  :root:not(.mockup):not(.noframe) .bubble { max-width: min(65%, 560px); }
+  :root:not(.mockup):not(.noframe) .chats { display: none !important; }
+  :root:not(.mockup):not(.noframe) .sndhint { top: 132px; }
+  :root:not(.mockup):not(.noframe) .menu { top: 52px; left: 16px; }
+}

@@ -21,11 +21,12 @@
 
   /* ---------- settings ---------- */
   const THEMES = ['gradient', 'classic', 'dark'];
-  let theme = params.get('theme') || store('wa.theme') || 'gradient';
+  let theme = params.get('theme') || store('wa.theme') || 'classic';
   let speed = parseFloat(params.get('speed')) || 1;
   let sound = store('wa.sound') !== '0';  // on by default
   let paused = false;
   if (params.get('frame') === '0') root.classList.add('noframe');
+  if (params.get('frame') === 'mockup') root.classList.add('mockup');
   applyTheme();
 
   function store(k, v) {
@@ -774,7 +775,7 @@
       <h3>${esc(m.name)}</h3><p class="crole">${esc(roleOf(id) || (vic ? 'קורבנות 7 באוקטובר' : 'הדרג הביטחוני'))}</p>
       <p class="ccount">${n.toLocaleString('he-IL')} הודעות</p>
       <button class="cmsg" data-id="${esc(id)}">💬 ${vic ? 'לצ׳אט קורבנות 7 באוקטובר' : 'הודעה'}</button></div>`);
-    sheetBody.querySelector('.cmsg').addEventListener('click', () => { closeSheet(); openPrivate(id); });
+    sheetBody.querySelector('.cmsg').addEventListener('click', () => { closeSheet(); pick(isVictim(id) ? 'vic' : 'm:' + id); });
   }
   feed.addEventListener('click', (e) => {
     const hit = e.target.closest('.av, .sender');
@@ -789,23 +790,55 @@
   chats.className = 'chats'; chats.hidden = true;
   document.querySelector('.screen').appendChild(chats);
   function lastOf(list) { const m = [...list].reverse().find(isMsg); return m ? (m.text || m.transcript || (m.type === 'video' ? '🎥 סרטון' : m.type === 'image' ? '📷 תמונה' : m.type === 'voice' ? '🎤 הודעה קולית' : '')).slice(0, 60) : ''; }
-  function openChats() {
+  let activeKey = 'main';
+  const desktop = () => matchMedia('(min-width: 900px)').matches && !root.classList.contains('mockup');
+  function chatRowsHTML(filter, q) {
     const sec = [...new Set(ALL().filter((s) => isMsg(s) && !isVictim(s.from)).map((s) => s.from))]
       .map((id) => ({ id, n: ALL().filter((s) => s.from === id).length })).sort((a, b) => b.n - a.n);
-    const row = (key, name, av, bg, sub, extra = '') => `<button class="chatrow" data-key="${esc(key)}"><span class="cav" style="background:${bg}">${av}</span><span class="cbody"><b>${esc(name)}</b><small>${esc(sub)}</small></span>${extra}</button>`;
-    chats.innerHTML = `<div class="chats-head"><button class="icon chats-back" aria-label="סגירה"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button><b>צ׳אטים</b></div><div class="chats-list">` +
-      row('main', G.name, `<span>${G.avatar || ''}</span>`, G.avatarBg, 'הקבוצה המלאה') +
-      row('sec', CHATS.sec.name, '<span>🛡️</span>', CHATS.sec.bg, lastOf(CHATS.sec.list())) +
-      row('vic', CHATS.vic.name, '<span>🕯️</span>', CHATS.vic.bg, lastOf(CHATS.vic.list())) +
-      '<div class="chats-sec">אנשי קשר</div>' +
-      sec.map(({ id, n }) => row('m:' + id, G.members[id].name, avatarHTML(id), G.members[id].color, roleOf(id) || `${n} הודעות`)).join('') + '</div>';
+    const row = (key, name, av, bg, sub) => `<button class="chatrow${key === activeKey ? ' active' : ''}" data-key="${esc(key)}"><span class="cav" style="background:${bg}">${av}</span><span class="cbody"><b>${esc(name)}</b><small>${esc(sub)}</small></span></button>`;
+    const match = (name) => !q || name.includes(q);
+    let html = '';
+    if (filter !== 'contacts') {
+      if (match(G.name)) html += row('main', G.name, `<span>${G.avatar || ''}</span>`, G.avatarBg, 'הקבוצה המלאה');
+      if (match(CHATS.sec.name)) html += row('sec', CHATS.sec.name, '<span>🛡️</span>', CHATS.sec.bg, lastOf(CHATS.sec.list()));
+      if (match(CHATS.vic.name)) html += row('vic', CHATS.vic.name, '<span>🕯️</span>', CHATS.vic.bg, lastOf(CHATS.vic.list()));
+    }
+    if (filter !== 'groups') {
+      const people = sec.filter(({ id }) => match(G.members[id].name));
+      if (people.length) html += '<div class="chats-sec">אנשי קשר</div>' + people.map(({ id, n }) => row('m:' + id, G.members[id].name, avatarHTML(id), G.members[id].color, roleOf(id) || `${n} הודעות`)).join('');
+    }
+    return html || '<div class="chats-empty">לא נמצאו צ׳אטים</div>';
+  }
+  function pick(k) {
+    if (k === 'main') backToMain(); else if (k.startsWith('m:')) openPrivate(k.slice(2)); else openChat(k);
+    activeKey = k;
+    renderSide();
+  }
+  function bindRows(container, after) {
+    container.querySelectorAll('.chatrow').forEach((b) => b.addEventListener('click', () => { if (after) after(); pick(b.dataset.key); }));
+  }
+  // desktop sidebar
+  const sideList = document.getElementById('sideList'), sideSearch = document.getElementById('sideSearch');
+  let sideFilter = 'all';
+  function renderSide() {
+    if (!sideList) return;
+    sideList.innerHTML = chatRowsHTML(sideFilter, (sideSearch.value || '').trim());
+    bindRows(sideList);
+  }
+  if (sideList) {
+    sideSearch.addEventListener('input', renderSide);
+    document.querySelectorAll('.side-filters button').forEach((b) => b.addEventListener('click', () => {
+      document.querySelectorAll('.side-filters button').forEach((x) => x.classList.toggle('on', x === b));
+      sideFilter = b.dataset.f; renderSide();
+    }));
+    renderSide();
+  }
+  // mobile: full-screen chats list
+  function openChats() {
+    chats.innerHTML = `<div class="chats-head"><button class="icon chats-back" aria-label="סגירה"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button><b>צ׳אטים</b></div><div class="chats-list">${chatRowsHTML('all', '')}</div>`;
     chats.hidden = false;
     chats.querySelector('.chats-back').addEventListener('click', () => { chats.hidden = true; });
-    chats.querySelectorAll('.chatrow').forEach((b) => b.addEventListener('click', () => {
-      chats.hidden = true;
-      const k = b.dataset.key;
-      if (k === 'main') backToMain(); else if (k.startsWith('m:')) openPrivate(k.slice(2)); else openChat(k);
-    }));
+    bindRows(chats.querySelector('.chats-list'), () => { chats.hidden = true; });
   }
   document.querySelector('.topbar .back').addEventListener('click', (e) => { e.stopPropagation(); openChats(); });
   // header tap in a private chat opens that contact
